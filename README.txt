@@ -60,3 +60,13 @@ IAA
 /nl/umw_job_dekker/users/av90w/projects/for-paper/for-higlass/AAVS1sg24-nontreated.250kb.eigs.cis.vecs.txt
 # DDX55sg2B clone
 /nl/umw_job_dekker/users/av90w/projects/for-paper/for-higlass/DDX55sg2B_NT-nontreated.250kb.eigs.cis.vecs.txt
+
+## insulation files
+
+#for asynch CTCF degron, siRNA and clones (on shadow)
+/data/alv/CTCF_degron/analysis/siRNA/insulation
+
+## ChIP seq
+
+#RAD21 bigwig
+/nl/umw_job_dekker/users/av90w/ChIPseq/fastq/test-ChIP2/new-mapping/results/bwa/mergedLibrary/bigwig/NT-RAD21_R1.mLb.clN.bigWig
