@@ -29,6 +29,12 @@ DDX55 peaks
 RAD21 peaks
 /nl/umw_job_dekker/users/av90w/projects/for-paper/for-higlass/NT-RAD21-narrowPeaks-sort-merge
 
+# splicing events
+# In CTCF degron after CTCF depletion
+/nl/umw_job_dekker/users/av90w/projects/for-paper/for-higlass/S44_NT_S442_IAA.output_events_all_select_hg19.txt
+# In DDX55 clone1
+/nl/umw_job_dekker/users/av90w/projects/for-paper/for-higlass/AAVS1_sg24_NT_DDX55_sg2B_NT.output_events_all_select_hg19.txt
+
 ## coolers
 #CTCF degron asynchronous
 NT
@@ -51,6 +57,20 @@ NT
 /nl/umw_job_dekker/users/av90w/distiller-run/20200220_mapping_for_dot_calling/results/coolers_library/CkoCT442-AAVS1sg2-4-NT-R1-T1__hg19.hg19.mapq_30.1000.mcool
 IAA
 /nl/umw_job_dekker/users/av90w/distiller-run/20200220_mapping_for_dot_calling/results/coolers_library/CkoCT442-AAVS1sg2-4-IAA-R1-T1__hg19.hg19.mapq_30.1000.mcool
+
+# libraries to merge together to call compartments at a higher resolution (10 libraries together)
+/nl/umw_job_dekker/users/av90w/distiller-run/20200220_mapping_for_dot_calling/results/coolers_library
+CkoC44-NT-R1-T1__hg19.hg19.mapq_30.1000.mcool
+CkoC44-NT-R2-T1__hg19.hg19.mapq_30.1000.mcool
+CkoC44-IAA48H-R1-T1__hg19.hg19.mapq_30.1000.mcool
+CkoC44-IAA48H-R2-T1__hg19.hg19.mapq_30.1000.mcool
+CkoC442-NT-R1-T1__hg19.hg19.mapq_30.1000.mcool
+CkoC442-NT-R2-T1__hg19.hg19.mapq_30.1000.mcool
+CkoCT442-G1-NT-R1-T1__hg19.hg19.mapq_30.1000.mcool
+CkoCT442-NT-si-ctrl-R1-T1__hg19.hg19.mapq_30.1000.mcool
+CkoCT442-NT-si-ctrl-R2-T1__hg19.hg19.mapq_30.1000.mcool
+/nl/umw_job_dekker/users/av90w/distiller-run/20200805_G1sorted_442_replicate/results/coolers_library
+CkoCT442-G1-NT-R2-T1__hg19.hg19.mapq_30.1000.mcool
 
 ## compartment files
 
