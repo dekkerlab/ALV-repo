@@ -89,7 +89,28 @@ CkoCT442-G1-NT-R2-T1__hg19.hg19.mapq_30.1000.mcool
 ## ChIP seq
 
 #RAD21 bigwig
+rep1
 /nl/umw_job_dekker/users/av90w/ChIPseq/fastq/test-ChIP2/new-mapping/results/bwa/mergedLibrary/bigwig/NT-RAD21_R1.mLb.clN.bigWig
+/nl/umw_job_dekker/users/av90w/ChIPseq/fastq/test-ChIP2/new-mapping/results/bwa/mergedLibrary/bigwig/IAA-RAD21_R1.mLb.clN.bigWig
+rep2
+/nl/umw_job_dekker/users/av90w/ChIPseq/fastq/ChIP4-bis/results/bwa/mergedLibrary/bigwig/NT-RAD21_R2.mLb.clN.bigWig
+/nl/umw_job_dekker/users/av90w/ChIPseq/fastq/ChIP3/results/bwa/mergedLibrary/bigwig/IAA-RAD21_R1.mLb.clN.bigWig
+
+#CTCF bigWig
+rep1
+/nl/umw_job_dekker/users/av90w/ChIPseq/fastq/ChIP3/results/bwa/mergedLibrary/bigwig/NT-CTCF_R1.mLb.clN.bigWig
+/nl/umw_job_dekker/users/av90w/ChIPseq/fastq/ChIP3/results/bwa/mergedLibrary/bigwig/IAA-CTCF_R1.mLb.clN.bigWig
+rep2
+/nl/umw_job_dekker/users/av90w/ChIPseq/fastq/ChIP4-bis/results/bwa/mergedLibrary/bigwig/NT-CTCF_R2.mLb.clN.bigWig
+/nl/umw_job_dekker/users/av90w/ChIPseq/fastq/ChIP4-bis/results/bwa/mergedLibrary/bigwig/IAA-CTCF_R2.mLb.clN.bigWig
+
+#DDX55 bigWig
+rep1
+/nl/umw_job_dekker/users/av90w/ChIPseq/fastq/test-ChIP2/new-mapping/results/bwa/mergedLibrary/bigwig/NT-DDX55_R1.mLb.clN.bigWig
+/nl/umw_job_dekker/users/av90w/ChIPseq/fastq/test-ChIP2/new-mapping/results/bwa/mergedLibrary/bigwig/IAA-DDX55_R1.mLb.clN.bigWig
+rep2
+/nl/umw_job_dekker/users/av90w/ChIPseq/fastq/ChIP3/results/bwa/mergedLibrary/bigwig/NT-DDX55_R1.mLb.clN.bigWig
+/nl/umw_job_dekker/users/av90w/ChIPseq/fastq/ChIP3/results/bwa/mergedLibrary/bigwig/IAA-DDX55_R1.mLb.clN.bigWig
 
 ## RNA seq
 /nl/umw_job_dekker/users/av90w/RNAseq/data/siRNA/report2546/bigwig_star/S442_NT.bw
