@@ -21,6 +21,9 @@ CTCF R-loops NO G4
 # ALL R-loops
 /nl/umw_job_dekker/users/av90w/projects/for-paper/for-higlass/GSM1720619_K562_DRIP_peaks-sort.bed
 
+# ALL G4
+/nl/umw_job_dekker/users/av90w/projects/for-paper/for-higlass/G4-Mao-sort
+
 # ChIP seq peaks
 CTCF peaks
 /nl/umw_job_dekker/users/av90w/projects/for-paper/for-higlass/NT-CTCF-narrowPeaks-sort-merge
