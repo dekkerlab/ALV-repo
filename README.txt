@@ -112,6 +112,19 @@ rep2
 /nl/umw_job_dekker/users/av90w/ChIPseq/fastq/ChIP3/results/bwa/mergedLibrary/bigwig/NT-DDX55_R1.mLb.clN.bigWig
 /nl/umw_job_dekker/users/av90w/ChIPseq/fastq/ChIP3/results/bwa/mergedLibrary/bigwig/IAA-DDX55_R1.mLb.clN.bigWig
 
+#input control bigwig
+#input controls for IAA RAD21 R2, CTCF R1, DDX55 R2
+/nl/umw_job_dekker/users/av90w/ChIPseq/fastq/ChIP3/results/bwa/mergedLibrary/bigwig/NT-input_R1.mLb.clN.bigWig 
+/nl/umw_job_dekker/users/av90w/ChIPseq/fastq/ChIP3/results/bwa/mergedLibrary/bigwig/IAA-input_R1.mLb.clN.bigWig 
+
+#input controls for NT RAD21 R2, CTCF R2
+/nl/umw_job_dekker/users/av90w/ChIPseq/fastq/ChIP4-bis/results/bwa/mergedLibrary/bigwig/NT-input_R2.mLb.clN.bigWig
+/nl/umw_job_dekker/users/av90w/ChIPseq/fastq/ChIP4-bis/results/bwa/mergedLibrary/bigwig/IAA-input_R2.mLb.clN.bigWig
+
+#input controls for RAD21 R1, DDX55 R1
+/nl/umw_job_dekker/users/av90w/ChIPseq/fastq/test-ChIP2/new-mapping/results/bwa/mergedLibrary/bigwig/NT-input_R1.mLb.clN.bigWig
+/nl/umw_job_dekker/users/av90w/ChIPseq/fastq/test-ChIP2/new-mapping/results/bwa/mergedLibrary/bigwig/IAA-input_R1.mLb.clN.bigWig
+
 ## RNA seq
 /nl/umw_job_dekker/users/av90w/RNAseq/data/siRNA/report2546/bigwig_star/S442_NT.bw
 
