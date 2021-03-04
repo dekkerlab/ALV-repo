@@ -2,6 +2,11 @@
 
 R-loop boundaries NO CTCF NO G4 do not show cohesin accumulation. Are they compartment boundaries? or are they boundaries that do not show RAD21 accumulation?
 
+## to do heatmap style to represent the DEAD box helicases in the screen
+
+/nl/umw_job_dekker/users/av90w/projects/for-paper/stem/FC_T6_DEADboxhelicases
+/nl/umw_job_dekker/users/av90w/projects/for-paper/stem/FC_T15_DEADboxhelicases
+
 ## BED File locations
 
 # The different categories used in the paper
