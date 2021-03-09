@@ -1,7 +1,7 @@
 cluster1
 DDX42
 DDX47
-DHX49
+DDX49
 DHX40
 DHX9
 cluster2
@@ -13,7 +13,7 @@ cluster4
 DDX3X
 cluster5
 DDX55
-DDHX33
+DHX33
 cluster6
 DDX1
 DHX15
