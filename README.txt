@@ -44,6 +44,22 @@ RAD21 peaks
 /nl/umw_job_dekker/users/av90w/projects/for-paper/for-higlass/AAVS1_sg24_NT_DDX55_sg2B_NT.output_events_all_select_hg19.txt
 
 ## coolers
+
+# HAP1 mother cell line
+# to merge together to have more reads? (both sets)
+#set #1
+/nl/umw_job_dekker/users/av90w/distiller-run/20200417_remap_polIIdegron/results/coolers_library/Hap1-WT-NT__hg19.hg19.mapq_30.1000.mcool
+/nl/umw_job_dekker/users/av90w/distiller-run/20200417_remap_polIIdegron/results/coolers_library/Hap1-WT-IAA4H__hg19.hg19.mapq_30.1000.mcool
+/nl/umw_job_dekker/users/av90w/distiller-run/20200417_remap_polIIdegron/results/coolers_library/Hap1-WT-IAA24H__hg19.hg19.mapq_30.1000.mcool
+/nl/umw_job_dekker/users/av90w/distiller-run/20200417_remap_polIIdegron/results/coolers_library/Hap1-WT-IAA48H__hg19.hg19.mapq_30.1000.mcool
+#set #2
+/nl/umw_job_dekker/users/av90w/distiller-run/20200417_remap_polIIdegron/results/coolers_library/Hap1-WT-NT-R2-T1__hg19.hg19.mapq_30.1000.mcool
+/nl/umw_job_dekker/users/av90w/distiller-run/20200417_remap_polIIdegron/results/coolers_library/Hap1-WT-IAA4H-R2-T1__hg19.hg19.mapq_30.1000.mcool
+/nl/umw_job_dekker/users/av90w/distiller-run/20200417_remap_polIIdegron/results/coolers_library/Hap1-WT-IAA48H-R2-T1__hg19.hg19.mapq_30.1000.mcool
+/nl/umw_job_dekker/users/av90w/distiller-run/20200417_remap_polIIdegron/results/coolers_library/Hap1-WT-IAA4HW4-R1-T1__hg19.hg19.mapq_30.1000.mcool
+/nl/umw_job_dekker/users/av90w/distiller-run/20200417_remap_polIIdegron/results/coolers_library/Hap1-WT-IAA4HW24-R1-T1__hg19.hg19.mapq_30.1000.mcool
+/nl/umw_job_dekker/users/av90w/distiller-run/20200417_remap_polIIdegron/results/coolers_library/Hap1-WT-IAA4HW48-R1-T1__hg19.hg19.mapq_30.1000.mcool
+
 #CTCF degron asynchronous
 NT
 /nl/umw_job_dekker/users/av90w/distiller-run/20200325_mapping_for_dot_calling_cispercent/results/coolers_library/CkoC442-NT-R1-T1__hg19.hg19.mapq_30.1000.mcool
