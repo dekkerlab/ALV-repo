@@ -1,3 +1,13 @@
+# files with our results and input files
+*.png
+*.cool
+*.mcool
+*.tsv
+*.csv
+*.bw
+*.bigWig
+*.bed
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
