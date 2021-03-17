@@ -36,6 +36,7 @@ DDX55 peaks
 /nl/umw_job_dekker/users/av90w/projects/for-paper/for-higlass/NT-DDX55-narrowPeaks-sort-merge
 RAD21 peaks
 /nl/umw_job_dekker/users/av90w/projects/for-paper/for-higlass/NT-RAD21-narrowPeaks-sort-merge
+/nl/umw_job_dekker/users/av90w/projects/for-paper/for-higlass/IAA-RAD21-narrowPeaks-sort-merge
 
 # splicing events
 # In CTCF degron after CTCF depletion
