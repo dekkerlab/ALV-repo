@@ -2,6 +2,11 @@
 
 R-loop boundaries NO CTCF NO G4 do not show cohesin accumulation. Are they compartment boundaries? or are they boundaries that do not show RAD21 accumulation?
 
+## to do heatmap style to represent the DEAD box helicases in the screen
+
+/nl/umw_job_dekker/users/av90w/projects/for-paper/stem/FC_T6_DEADboxhelicases
+/nl/umw_job_dekker/users/av90w/projects/for-paper/stem/FC_T15_DEADboxhelicases
+
 ## BED File locations
 
 # The different categories used in the paper
@@ -21,6 +26,9 @@ CTCF R-loops NO G4
 # ALL R-loops
 /nl/umw_job_dekker/users/av90w/projects/for-paper/for-higlass/GSM1720619_K562_DRIP_peaks-sort.bed
 
+# ALL G4
+/nl/umw_job_dekker/users/av90w/projects/for-paper/for-higlass/G4-Mao-sort
+
 # ChIP seq peaks
 CTCF peaks
 /nl/umw_job_dekker/users/av90w/projects/for-paper/for-higlass/NT-CTCF-narrowPeaks-sort-merge
@@ -29,7 +37,29 @@ DDX55 peaks
 RAD21 peaks
 /nl/umw_job_dekker/users/av90w/projects/for-paper/for-higlass/NT-RAD21-narrowPeaks-sort-merge
 
+# splicing events
+# In CTCF degron after CTCF depletion
+/nl/umw_job_dekker/users/av90w/projects/for-paper/for-higlass/S44_NT_S442_IAA.output_events_all_select_hg19.txt
+# In DDX55 clone1
+/nl/umw_job_dekker/users/av90w/projects/for-paper/for-higlass/AAVS1_sg24_NT_DDX55_sg2B_NT.output_events_all_select_hg19.txt
+
 ## coolers
+
+# HAP1 mother cell line
+# to merge together to have more reads? (both sets)
+#set #1
+/nl/umw_job_dekker/users/av90w/distiller-run/20200417_remap_polIIdegron/results/coolers_library/Hap1-WT-NT__hg19.hg19.mapq_30.1000.mcool
+/nl/umw_job_dekker/users/av90w/distiller-run/20200417_remap_polIIdegron/results/coolers_library/Hap1-WT-IAA4H__hg19.hg19.mapq_30.1000.mcool
+/nl/umw_job_dekker/users/av90w/distiller-run/20200417_remap_polIIdegron/results/coolers_library/Hap1-WT-IAA24H__hg19.hg19.mapq_30.1000.mcool
+/nl/umw_job_dekker/users/av90w/distiller-run/20200417_remap_polIIdegron/results/coolers_library/Hap1-WT-IAA48H__hg19.hg19.mapq_30.1000.mcool
+#set #2
+/nl/umw_job_dekker/users/av90w/distiller-run/20200417_remap_polIIdegron/results/coolers_library/Hap1-WT-NT-R2-T1__hg19.hg19.mapq_30.1000.mcool
+/nl/umw_job_dekker/users/av90w/distiller-run/20200417_remap_polIIdegron/results/coolers_library/Hap1-WT-IAA4H-R2-T1__hg19.hg19.mapq_30.1000.mcool
+/nl/umw_job_dekker/users/av90w/distiller-run/20200417_remap_polIIdegron/results/coolers_library/Hap1-WT-IAA48H-R2-T1__hg19.hg19.mapq_30.1000.mcool
+/nl/umw_job_dekker/users/av90w/distiller-run/20200417_remap_polIIdegron/results/coolers_library/Hap1-WT-IAA4HW4-R1-T1__hg19.hg19.mapq_30.1000.mcool
+/nl/umw_job_dekker/users/av90w/distiller-run/20200417_remap_polIIdegron/results/coolers_library/Hap1-WT-IAA4HW24-R1-T1__hg19.hg19.mapq_30.1000.mcool
+/nl/umw_job_dekker/users/av90w/distiller-run/20200417_remap_polIIdegron/results/coolers_library/Hap1-WT-IAA4HW48-R1-T1__hg19.hg19.mapq_30.1000.mcool
+
 #CTCF degron asynchronous
 NT
 /nl/umw_job_dekker/users/av90w/distiller-run/20200325_mapping_for_dot_calling_cispercent/results/coolers_library/CkoC442-NT-R1-T1__hg19.hg19.mapq_30.1000.mcool
@@ -52,6 +82,36 @@ NT
 IAA
 /nl/umw_job_dekker/users/av90w/distiller-run/20200220_mapping_for_dot_calling/results/coolers_library/CkoCT442-AAVS1sg2-4-IAA-R1-T1__hg19.hg19.mapq_30.1000.mcool
 
+#POLII degron (replicates merged)
+/nl/umw_job_dekker/users/av90w/distiller-run/20200417_remap_polIIdegron/results/coolers_library_group/PTB2539-NT.hg19.mapq_30.1000.mcool
+/nl/umw_job_dekker/users/av90w/distiller-run/20200417_remap_polIIdegron/results/coolers_library_group/PTB2539-IAA.hg19.mapq_30.1000.mcool
+
+#CTCF degron G1 sorted to redo the insulation at a finer scale with motif search (replicates merged)
+/nl/umw_job_dekker/users/av90w/distiller-run/20200805_G1sorted_442_replicate/results/coolers_library_group/G1-NT.hg19.mapq_30.1000.mcool
+/nl/umw_job_dekker/users/av90w/distiller-run/20200805_G1sorted_442_replicate/results/coolers_library_group/G1-IAA.hg19.mapq_30.1000.mcool
+
+# libraries to merge together to call compartments at a higher resolution (10 libraries together)
+/nl/umw_job_dekker/users/av90w/distiller-run/20200220_mapping_for_dot_calling/results/coolers_library
+CkoC44-NT-R1-T1__hg19.hg19.mapq_30.1000.mcool
+CkoC44-NT-R2-T1__hg19.hg19.mapq_30.1000.mcool
+CkoC44-IAA48H-R1-T1__hg19.hg19.mapq_30.1000.mcool
+CkoC44-IAA48H-R2-T1__hg19.hg19.mapq_30.1000.mcool
+CkoC442-NT-R1-T1__hg19.hg19.mapq_30.1000.mcool
+CkoC442-NT-R2-T1__hg19.hg19.mapq_30.1000.mcool
+CkoCT442-G1-NT-R1-T1__hg19.hg19.mapq_30.1000.mcool
+CkoCT442-NT-si-ctrl-R1-T1__hg19.hg19.mapq_30.1000.mcool
+CkoCT442-NT-si-ctrl-R2-T1__hg19.hg19.mapq_30.1000.mcool
+/nl/umw_job_dekker/users/av90w/distiller-run/20200805_G1sorted_442_replicate/results/coolers_library
+CkoCT442-G1-NT-R2-T1__hg19.hg19.mapq_30.1000.mcool
+
+#libraries to merge together for compartment IAA treated
+/nl/umw_job_dekker/users/av90w/distiller-run/20200220_mapping_for_dot_calling/results/coolers_library
+CkoCT442-IAA-si-ctrl-R1-T1__hg19.hg19.mapq_30.1000.mcool
+CkoCT442-IAA-si-ctrl-R2-T1__hg19.hg19.mapq_30.1000.mcool
+CkoC442-IAA48H-R1-T1__hg19.hg19.mapq_30.1000.mcool
+CkoC442-IAA48H-R2-T1__hg19.hg19.mapq_30.1000.mcool
+/nl/umw_job_dekker/users/av90w/distiller-run/20200805_G1sorted_442_replicate/results/coolers_library_group/G1-IAA.hg19.mapq_30.1000.mcool
+
 ## compartment files
 
 # CTCF degron non treated
@@ -69,7 +129,41 @@ IAA
 ## ChIP seq
 
 #RAD21 bigwig
+rep1
 /nl/umw_job_dekker/users/av90w/ChIPseq/fastq/test-ChIP2/new-mapping/results/bwa/mergedLibrary/bigwig/NT-RAD21_R1.mLb.clN.bigWig
+/nl/umw_job_dekker/users/av90w/ChIPseq/fastq/test-ChIP2/new-mapping/results/bwa/mergedLibrary/bigwig/IAA-RAD21_R1.mLb.clN.bigWig
+rep2
+/nl/umw_job_dekker/users/av90w/ChIPseq/fastq/ChIP4-bis/results/bwa/mergedLibrary/bigwig/NT-RAD21_R2.mLb.clN.bigWig
+/nl/umw_job_dekker/users/av90w/ChIPseq/fastq/ChIP3/results/bwa/mergedLibrary/bigwig/IAA-RAD21_R1.mLb.clN.bigWig
+
+#CTCF bigWig
+rep1
+/nl/umw_job_dekker/users/av90w/ChIPseq/fastq/ChIP3/results/bwa/mergedLibrary/bigwig/NT-CTCF_R1.mLb.clN.bigWig
+/nl/umw_job_dekker/users/av90w/ChIPseq/fastq/ChIP3/results/bwa/mergedLibrary/bigwig/IAA-CTCF_R1.mLb.clN.bigWig
+rep2
+/nl/umw_job_dekker/users/av90w/ChIPseq/fastq/ChIP4-bis/results/bwa/mergedLibrary/bigwig/NT-CTCF_R2.mLb.clN.bigWig
+/nl/umw_job_dekker/users/av90w/ChIPseq/fastq/ChIP4-bis/results/bwa/mergedLibrary/bigwig/IAA-CTCF_R2.mLb.clN.bigWig
+
+#DDX55 bigWig
+rep1
+/nl/umw_job_dekker/users/av90w/ChIPseq/fastq/test-ChIP2/new-mapping/results/bwa/mergedLibrary/bigwig/NT-DDX55_R1.mLb.clN.bigWig
+/nl/umw_job_dekker/users/av90w/ChIPseq/fastq/test-ChIP2/new-mapping/results/bwa/mergedLibrary/bigwig/IAA-DDX55_R1.mLb.clN.bigWig
+rep2
+/nl/umw_job_dekker/users/av90w/ChIPseq/fastq/ChIP3/results/bwa/mergedLibrary/bigwig/NT-DDX55_R1.mLb.clN.bigWig
+/nl/umw_job_dekker/users/av90w/ChIPseq/fastq/ChIP3/results/bwa/mergedLibrary/bigwig/IAA-DDX55_R1.mLb.clN.bigWig
+
+#input control bigwig
+#input controls for IAA RAD21 R2, CTCF R1, DDX55 R2
+/nl/umw_job_dekker/users/av90w/ChIPseq/fastq/ChIP3/results/bwa/mergedLibrary/bigwig/NT-input_R1.mLb.clN.bigWig 
+/nl/umw_job_dekker/users/av90w/ChIPseq/fastq/ChIP3/results/bwa/mergedLibrary/bigwig/IAA-input_R1.mLb.clN.bigWig 
+
+#input controls for NT RAD21 R2, CTCF R2
+/nl/umw_job_dekker/users/av90w/ChIPseq/fastq/ChIP4-bis/results/bwa/mergedLibrary/bigwig/NT-input_R2.mLb.clN.bigWig
+/nl/umw_job_dekker/users/av90w/ChIPseq/fastq/ChIP4-bis/results/bwa/mergedLibrary/bigwig/IAA-input_R2.mLb.clN.bigWig
+
+#input controls for RAD21 R1, DDX55 R1
+/nl/umw_job_dekker/users/av90w/ChIPseq/fastq/test-ChIP2/new-mapping/results/bwa/mergedLibrary/bigwig/NT-input_R1.mLb.clN.bigWig
+/nl/umw_job_dekker/users/av90w/ChIPseq/fastq/test-ChIP2/new-mapping/results/bwa/mergedLibrary/bigwig/IAA-input_R1.mLb.clN.bigWig
 
 ## RNA seq
 /nl/umw_job_dekker/users/av90w/RNAseq/data/siRNA/report2546/bigwig_star/S442_NT.bw
