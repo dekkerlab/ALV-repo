@@ -31,12 +31,14 @@ CTCF R-loops NO G4
 
 # ChIP seq peaks
 CTCF peaks
-/nl/umw_job_dekker/users/av90w/projects/for-paper/for-higlass/NT-CTCF-narrowPeaks-sort-merge
+/nl/umw_job_dekker/users/av90w/ChIPseq/ChIP4/MACS2/narrow0.01/NT-CTCF-narrowPeaks-sort-merge-with-strength.bed
+/nl/umw_job_dekker/users/av90w/ChIPseq/ChIP4/MACS2/narrow0.01/IAA-CTCF-narrowPeaks-sort-merge-with-strength.bed
 DDX55 peaks
-/nl/umw_job_dekker/users/av90w/projects/for-paper/for-higlass/NT-DDX55-narrowPeaks-sort-merge
+/nl/umw_job_dekker/users/av90w/ChIPseq/ChIP4/MACS2/narrow0.01/NT-DDX55-narrowPeaks-sort-merge-with-strength.bed
+/nl/umw_job_dekker/users/av90w/ChIPseq/ChIP4/MACS2/narrow0.01/IAA-DDX55-narrowPeaks-sort-merge-with-strength.bed
 RAD21 peaks
-/nl/umw_job_dekker/users/av90w/projects/for-paper/for-higlass/NT-RAD21-narrowPeaks-sort-merge
-/nl/umw_job_dekker/users/av90w/ChIPseq/ChIP4/MACS2/narrow0.01/IAA-RAD21-narrowPeaks-sort-merge
+/nl/umw_job_dekker/users/av90w/ChIPseq/ChIP4/MACS2/narrow0.01/NT-RAD21-narrowPeaks-sort-merge-with-strength.bed
+/nl/umw_job_dekker/users/av90w/ChIPseq/ChIP4/MACS2/narrow0.01/IAA-RAD21-narrowPeaks-sort-merge-with-strength.bed
 
 # splicing events
 # In CTCF degron after CTCF depletion
