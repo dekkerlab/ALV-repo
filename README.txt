@@ -173,6 +173,14 @@ rep2
 /nl/umw_job_dekker/users/av90w/ChIPseq/fastq/test-ChIP2/new-mapping/results/bwa/mergedLibrary/bigwig/NT-input_R1.mLb.clN.bigWig
 /nl/umw_job_dekker/users/av90w/ChIPseq/fastq/test-ChIP2/new-mapping/results/bwa/mergedLibrary/bigwig/IAA-input_R1.mLb.clN.bigWig
 
+#K562 G4 ChIP-seq bigwig
+#to download for eg: wget ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM1720nnn/GSM1720619/suppl/GSM1720619_K562_DRIP_peaks.bed.gz
+GSM2876090_B_REP1.SLX-12319.K562_asynch_a_701_504.clean.bw
+GSM2876091_B_REP1.SLX-12319.K562_asynch_c_703_504.clean.bw
+GSM2876093_B_REP2.SLX-12320.K562_P9_Async_c_701_503.rmdup.clean.bw
+GSM2876094_B_REP2.SLX-12320.K562_P9_Async_b_701_502.rmdup.clean.bw
+GSM2876095_B_REP2.SLX-12320.K562_P9_Async_a_701_517.rmdup.clean.bw
+
 ## RNA seq
 /nl/umw_job_dekker/users/av90w/RNAseq/data/siRNA/report2546/bigwig_star/S442_NT.bw
 
