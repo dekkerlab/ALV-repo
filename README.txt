@@ -10,7 +10,7 @@ R-loop boundaries NO CTCF NO G4 do not show cohesin accumulation. Are they compa
 ## BED File locations
 
 # The different categories used in the paper
-R-loops NO CTCF G4
+# R-loops NO CTCF G4
 /nl/umw_job_dekker/users/av90w/projects/for-paper/for-higlass/diff-cat/intersect-Rloops-NO-all-NT-CTCF-G4-Mao
 R-loops NO CTCF NO G4 (####### THIS IS THE CATEGORY WE WOULD KNOW IF THEY ARE COMPARTMENTS BOUNDARIES)
 /nl/umw_job_dekker/users/av90w/projects/for-paper/for-higlass/diff-cat/intersect-Rloops-NO-all-NT-CTCF-NO-G4-Mao
@@ -25,6 +25,11 @@ CTCF R-loops NO G4
 
 # ALL R-loops
 /nl/umw_job_dekker/users/av90w/projects/for-paper/for-higlass/GSM1720619_K562_DRIP_peaks-sort.bed
+
+# G4 different categories
+/nl/umw_job_dekker/users/av90w/ChIPseq/ChIP4/deeptools/G4/mao/intersect-G4-NO-CTCF
+/nl/umw_job_dekker/users/av90w/ChIPseq/ChIP4/deeptools/G4/mao/intersect-all-NT-CTCF-G4
+/nl/umw_job_dekker/users/av90w/ChIPseq/ChIP4/deeptools/G4/mao/intersect-all-NT-CTCF-NO-G4
 
 # ALL G4
 /nl/umw_job_dekker/users/av90w/projects/for-paper/for-higlass/G4-Mao-sort
