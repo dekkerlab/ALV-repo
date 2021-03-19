@@ -111,6 +111,11 @@ CkoCT442-NT-si-ctrl-R1-T1__hg19.hg19.mapq_30.1000.mcool
 CkoCT442-NT-si-ctrl-R2-T1__hg19.hg19.mapq_30.1000.mcool
 /nl/umw_job_dekker/users/av90w/distiller-run/20200805_G1sorted_442_replicate/results/coolers_library
 CkoCT442-G1-NT-R2-T1__hg19.hg19.mapq_30.1000.mcool
+#NT libraries I forgot to add to our non treated pool:
+/nl/umw_job_dekker/users/av90w/distiller-run/20201110-PDS-PlaB-rep2/results/coolers_library
+CkoCT442-NT-R3-T1__hg19.hg19.mapq_30.1000.mcool
+CkoCT442-NT-R4-T1__hg19.hg19.mapq_30.1000.mcool
+/nl/umw_job_dekker/users/av90w/distiller-run/20201119-cPDS-rep2/results/coolers_library/CkoCT442-NT-R5-T1__hg19.hg19.mapq_30.1000.mcool
 
 #libraries to merge together for compartment IAA treated
 /nl/umw_job_dekker/users/av90w/distiller-run/20200220_mapping_for_dot_calling/results/coolers_library
@@ -119,6 +124,23 @@ CkoCT442-IAA-si-ctrl-R2-T1__hg19.hg19.mapq_30.1000.mcool
 CkoC442-IAA48H-R1-T1__hg19.hg19.mapq_30.1000.mcool
 CkoC442-IAA48H-R2-T1__hg19.hg19.mapq_30.1000.mcool
 /nl/umw_job_dekker/users/av90w/distiller-run/20200805_G1sorted_442_replicate/results/coolers_library_group/G1-IAA.hg19.mapq_30.1000.mcool
+#IAA libraries I forgot to add to our IAA treated pool:
+/nl/umw_job_dekker/users/av90w/distiller-run/20201110-PDS-PlaB-rep2/results/coolers_library
+CkoCT442-IAA-R3-T1__hg19.hg19.mapq_30.1000.mcool
+CkoCT442-IAA-R4-T1__hg19.hg19.mapq_30.1000.mcool
+/nl/umw_job_dekker/users/av90w/distiller-run/20201119-cPDS-rep2/results/coolers_library/CkoCT442-IAA-R5-T1__hg19.hg19.mapq_30.1000.mcool
+
+#PDS libraries:
+/nl/umw_job_dekker/users/av90w/distiller-run/20201110-PDS-PlaB-rep2/results/coolers_library
+CkoCT442-NT-PDS-R1-T1__hg19.hg19.mapq_30.1000.mcool
+CkoCT442-NT-PDS-R2-T1__hg19.hg19.mapq_30.1000.mcool
+CkoCT442-IAA-PDS-R1-T1__hg19.hg19.mapq_30.1000.mcool
+CkoCT442-IAA-PDS-R2-T1__hg19.hg19.mapq_30.1000.mcool
+
+#pooled PDS libraries
+/nl/umw_job_dekker/users/av90w/distiller-run/20201110-PDS-PlaB-rep2/results/coolers_library_group
+NT-PDS.hg19.mapq_30.1000.mcool
+IAA-PDS.hg19.mapq_30.1000.mcool
 
 ## compartment files
 
