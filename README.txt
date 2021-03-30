@@ -31,6 +31,12 @@ CTCF R-loops NO G4
 /nl/umw_job_dekker/users/av90w/ChIPseq/ChIP4/deeptools/G4/mao/intersect-all-NT-CTCF-G4
 /nl/umw_job_dekker/users/av90w/ChIPseq/ChIP4/deeptools/G4/mao/intersect-all-NT-CTCF-NO-G4
 
+# G4 different categories CENTERED on peaks
+/nl/umw_job_dekker/users/av90w/ChIPseq/ChIP4/deeptools/G4/mao/recenter/
+intersect-all-NT-CTCF-G4-centered
+intersect-all-NT-CTCF-NO-G4-centered
+intersect-G4-NO-CTCF-centered
+
 # ALL G4
 /nl/umw_job_dekker/users/av90w/projects/for-paper/for-higlass/G4-Mao-sort
 
