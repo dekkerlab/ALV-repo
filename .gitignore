@@ -7,6 +7,11 @@
 *.bw
 *.bigWig
 *.bed
+*.bb
+*.pdf
+*.bam
+*.bai
+*.sizes
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

@@ -17,14 +17,15 @@ from copy import copy
 import matplotlib
 import matplotlib.pyplot as plt
 import matplotlib.colors as colors
+from matplotlib import ticker
 
 # now let's show a stackup of flipped and ordered EV1-s ...
 cmap1 = copy(matplotlib.cm.get_cmap("RdBu_r"))
-cmap1.set_bad(color='black')
+cmap1.set_bad(color='lightgrey')
 cmap2 = copy(matplotlib.cm.get_cmap("RdYlBu_r"))
-cmap2.set_bad(color='black')
+cmap2.set_bad(color='lightgrey')
 cmap3 = copy(matplotlib.cm.get_cmap("Reds"))
-cmap3.set_bad(color='black')
+cmap3.set_bad(color='lightgrey')
 
 
 def rstacks(fname,regs,flank=250_000,binsize=50000):
@@ -81,7 +82,7 @@ def recursive_data_ordering(ks, idxs, data_dict, verbose=False):
     
     Parameters
     ----------
-    ks : [( str, "sort", int)] or [( str, "clust", int)]
+    ks : [( str, "sort", int, bool)] or [( str, "clust", int, bool)]
         List of recursive clustering/sorting directives, in
     idxs : array
         Array of indexes of the input data
@@ -97,7 +98,7 @@ def recursive_data_ordering(ks, idxs, data_dict, verbose=False):
     """
     _ks = copy(ks)
     if _ks:
-        k, action, ngroups = _ks.pop(0)
+        k, action, ngroups, ascending = _ks.pop(0)
         # extract relevant data from data_dict
         _data = data_dict[k][idxs]
         final_sorted_idx = []
@@ -109,6 +110,7 @@ def recursive_data_ordering(ks, idxs, data_dict, verbose=False):
             assert len(_data.shape) > 1
             labels, centroids, _ = kmeans_missing(_data, ngroups)
             clusters = np.argsort( np.mean(centroids, axis=1) )
+            cluster = clusters if ascending else clusters[::-1]
             # go into each subgroup/cluster:
             for i in clusters:
                 clust_i_idx = np.argwhere(labels == i).flatten()
@@ -122,6 +124,7 @@ def recursive_data_ordering(ks, idxs, data_dict, verbose=False):
             # presumably - _data is 1D in this case
             assert len(_data.shape) == 1
             _sorted_idx = np.argsort( _data )
+            _sorted_idx = _sorted_idx if ascending else _sorted_idx[::-1]
             _sorted_idx = idxs[_sorted_idx]
             # split into ngroups if requested
             for _grp_sorted_idx in np.array_split(_sorted_idx, ngroups):
@@ -189,24 +192,151 @@ def kmeans_missing(X, n_clusters, max_iter=10):
     else:
         # don't bother with clustering if there aren't too many entries
         return np.arange(X_hat.shape[0]), X_hat, X_hat
+
+
+def plot_spacing_footprint_distros(features):
+    """
+    little function to help us plot a couple of distributions
+    a distribution of spacings between genomic features and
+    a distribution of their footprints ....
     
+    supply several genomic features DFs as a dictionary
     
-def plot_stackups(hmss,titles,limss,cmps,norms=None,binsizes=None,fname="xxx.png",fillmissing=False,interpolation="nearest"):
+    first one is going to be the main one ! use to define bins
+    """
+    # prepare figure/axis for spacings and footprint
+    fig,(ax1,ax2) = plt.subplots(1,2,figsize=(11,4))
+    spacings = {}
+    footprints = {}
+    for k in features:
+        _df = features[k]
+        # calculate spacings, assuming everyhting is sorted
+        spacings[k] = np.concatenate(
+            [ np.diff(_df["start"].values) for _, _df in _df.groupby("chrom") ]
+        )
+        # calculate footprints of the features, after merging ...
+        footprints[k] = (_df["end"] - _df["start"]).values
+
+    # let's use the first features set as the more important one - sort of ...
+    k0,*_ = features.keys()
+    ref_spacings = spacings[k0]
+    ref_footprints = footprints[k0]
+    bins_spacing = np.geomspace(ref_spacings.min()+1,ref_spacings.max(),num=100)
+    bins_footprint = np.geomspace(ref_footprints.min(),ref_footprints.max(),num=100)
+    
+    for k in features:
+        ax1.hist(spacings[k], bins=bins_spacing, log=False, alpha=0.5, label=f"{k} {len(features[k])}")
+        ax2.hist(footprints[k], bins=bins_footprint, log=False, alpha=0.5, label=f"{k} {len(features[k])}")
+
+    ax1.set_xscale("log")
+    ax1.set_xlabel("spacing between adjacent features, bp")
+    ax1.set_ylabel("# of spacings")
+    ax1.legend(frameon=False)
+
+    ax2.set_xscale("log")
+    ax2.set_yscale("log")
+    ax2.set_xlabel("feature footprint, bp")
+    ax2.set_ylabel("# features")
+    ax2.legend(frameon=False)
+    
+    return
+
+
+def normalize_insulation_stackups_INPLACE(
+    stackups_set,
+    ins_keys,
+    subtract = "mean_top",
+    subtract_size = 7
+):
+    """
+    take a dict of stackups for a subset of insulation stackups (ins_keys)
+    subtract the maximum value (or mean of several highest values)
+    from each row of a given insulation stackup in order to make
+    the dip of the insulation stackup be "measured" in boundary stength units
+    i.e. log fold change between dip and "shoulders" ... sorta kinda
+    """
+    # subtract = None
+    # subtract = "shoulders"
+    # subtract = "median_top"
+    for k in ins_keys:
+        _ddd = stackups_set[k]
+        if subtract == "shoulders":
+            shoulders = np.hstack( [_ddd[:,:subtract_size], _ddd[:,-subtract_size:]] )
+            shoulders = np.nanmean(shoulders, axis=1, keepdims=True)
+            _ddd -= shoulders
+        elif subtract == "mean_top":
+            _top = np.sort( _ddd )[:,-subtract_size:]
+            mean_top = np.nanmean(_top, axis=1, keepdims=True)
+            _ddd -= mean_top
+        elif subtract == "median_top":
+            _top = np.sort( _ddd )[:,-subtract_size:]
+            median_top = np.nanmean(_top, axis=1, keepdims=True)
+            _ddd -= median_top
+        else:
+            print("Operation not supported !!!")
+        stackups_set[k] = _ddd
+    # the end
+    return
+
+def plot_stackups(
+                  extra_plots,
+                  hmss,
+                  titles,
+                  limss,
+                  cmps,
+                  norms=None,
+                  binsizes=None,
+                  fname="xxx.png",
+                  fillmissing=False,
+                  interpolation="nearest"
+                 ):
     """
     plot a buch of stackups ...
     """
-    num_stackups = len(hmss)
-    fig = plt.figure(figsize=(3.5*num_stackups,24),facecolor="white",constrained_layout=True)
-    gs = fig.add_gridspec( 3, num_stackups, width_ratios=[1]*num_stackups, height_ratios=[1.1,9,0.1] )
+    if extra_plots is not None:
+        num_stackups = len(hmss) + len(extra_plots)
+    else:
+        extra_plots = []
+        num_stackups = len(hmss)
+    # let's figure out - how tall is this stackup
+    stackup_height = len(hmss[0])*12/10_000
+    figure_height = stackup_height + 2.5
+    fig = plt.figure(
+        figsize=(3.5*num_stackups, figure_height),
+        facecolor="white",
+        constrained_layout=True
+    )
+    gs = fig.add_gridspec(
+        3,
+        num_stackups,
+        width_ratios=[1]*num_stackups,
+        height_ratios=[
+            0.95*2.5/figure_height,
+            (figure_height-2.5)/figure_height,
+            0.05*2.5/figure_height
+        ]
+    )
 
     ax_profile = {}
     ax_stackup = {}
     ax_cbar = {}
-    for idx in range(num_stackups):
+    for idx in range(len(extra_plots), num_stackups):
         ax_profile[idx] = fig.add_subplot(gs[0,idx])
         ax_stackup[idx] = fig.add_subplot(gs[1,idx])
         ax_cbar[idx] = fig.add_subplot(gs[2,idx])
-
+    for idx in range(len(extra_plots)):
+        ax_stackup[idx] = fig.add_subplot(gs[1,idx])
+        
+    for idx in range(len(extra_plots)):
+        _y,_width,_color = extra_plots[idx]
+        #         ax_stackup[idx].barh(_y,_width,1,color=_color,edgecolor="dimgray")
+        ax_stackup[idx].step(_width,_y,color="dimgray")
+        ax_stackup[idx].fill_betweenx(_y,0,_width,color=_color,step="post")
+        ax_stackup[idx].invert_yaxis()
+        ax_stackup[idx].invert_xaxis()
+        ax_stackup[idx].yaxis.set_major_formatter(ticker.FuncFormatter(lambda x,pos: f"{int(x*100)}"))
+        ax_stackup[idx].set_ylim(max(_y),0)
+        ax_stackup[idx].set_xlim(max(_width),0)
 
     hm_arr = {}
     profile_hm = {}
@@ -223,10 +353,10 @@ def plot_stackups(hmss,titles,limss,cmps,norms=None,binsizes=None,fname="xxx.png
         vlims[idx] = lms
 
     for idx,cmap in enumerate(cmps):
-        ax_profile[idx].plot(profile_hm[idx],"ks-")
+        ax_profile[idx+len(extra_plots)].plot(profile_hm[idx],"k-")
         if norms is not None:
-            ax_profile[idx].set_yscale("linear" if norms[idx] is None else "log")
-        stack_hm = ax_stackup[idx].imshow(
+            ax_profile[idx+len(extra_plots)].set_yscale("linear" if norms[idx] is None else "log")
+        stack_hm = ax_stackup[idx+len(extra_plots)].imshow(
                           hm_arr[idx],
                           norm=None if norms is None else norms[idx],
                           aspect="auto",
@@ -237,24 +367,24 @@ def plot_stackups(hmss,titles,limss,cmps,norms=None,binsizes=None,fname="xxx.png
         )
         # beautify ...
         center_bin = hm_arr[idx].shape[1]/2 - .5
-        ax_profile[idx].set_ylim(vlims[idx])
-        ax_profile[idx].set_title(titles[idx])
-        ax_profile[idx].axvline(center_bin, color="grey")
-        ax_stackup[idx].axvline(center_bin, color="grey")
+        ax_profile[idx+len(extra_plots)].set_ylim(vlims[idx])
+        ax_profile[idx+len(extra_plots)].set_title(titles[idx])
+        # ax_profile[idx+len(extra_plots)].axvline(center_bin, color="grey")
+        # ax_stackup[idx+len(extra_plots)].axvline(center_bin, color="grey")
         if binsizes is not None:
             flank_in_kb = int((center_bin+.5)*binsizes[idx]/1000)
             flank_ticks = [0-.5,center_bin,hm_arr[idx].shape[1]-.5]
             flank_ticklabels = [-flank_in_kb,0,flank_in_kb]
-            ax_profile[idx].set_xticks(flank_ticks)
-            ax_profile[idx].set_xticklabels(flank_ticklabels)
-            ax_stackup[idx].set_xticks(flank_ticks)
-            ax_stackup[idx].set_xticklabels(flank_ticklabels)
-    #     for CSc in CS_coords[:-1]:
-    #         ax_stackup[idx].axhline(CSc, color="grey",lw=4)
-        plt.colorbar(stack_hm,cax=ax_cbar[idx],orientation="horizontal")
+            ax_profile[idx+len(extra_plots)].set_xticks(flank_ticks)
+            ax_profile[idx+len(extra_plots)].set_xticklabels(flank_ticklabels)
+            ax_stackup[idx+len(extra_plots)].set_xticks(flank_ticks)
+            ax_stackup[idx+len(extra_plots)].set_xticklabels(flank_ticklabels)
+        plt.colorbar(stack_hm,cax=ax_cbar[idx+len(extra_plots)],orientation="horizontal")
+        
+    for idx in range(1, num_stackups):
+        ax_stackup[idx].set_yticks([])
 
     plt.savefig(fname)
-
 
 
 def generate_random_bed(num_intervals, db, footprint=1_000, trunc=10_000):
