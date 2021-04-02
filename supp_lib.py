@@ -14,21 +14,12 @@ from sklearn.cluster import KMeans
 from collections import OrderedDict
 import bbi
 from copy import copy
-import matplotlib
 import matplotlib.pyplot as plt
 import matplotlib.colors as colors
 from matplotlib import ticker
+from more_itertools import chunked
 
-# now let's show a stackup of flipped and ordered EV1-s ...
-cmap1 = copy(matplotlib.cm.get_cmap("RdBu_r"))
-cmap1.set_bad(color='lightgrey')
-cmap2 = copy(matplotlib.cm.get_cmap("RdYlBu_r"))
-cmap2.set_bad(color='lightgrey')
-cmap3 = copy(matplotlib.cm.get_cmap("Reds"))
-cmap3.set_bad(color='lightgrey')
-
-
-def rstacks(fname,regs,flank=250_000,binsize=50000):
+def rstacks(fname,regs,flank=250_000,binsize=50000,fill_missing=.0):
     """
     generate a stackup from bigwig, using bbi
     """
@@ -39,7 +30,7 @@ def rstacks(fname,regs,flank=250_000,binsize=50000):
         (regs.start+regs.end)/2-flank,
         (regs.start+regs.end)/2+flank,
         bins=int(2*flank/binsize),
-        missing=np.nan,
+        missing=fill_missing,
         oob=np.nan,
         summary='mean'
     )
@@ -385,6 +376,142 @@ def plot_stackups(
         ax_stackup[idx].set_yticks([])
 
     plt.savefig(fname)
+
+def plot_stackups_sets(
+                  extra_plots,
+                  hmss, # will become a dictionary now (or list) ...
+                  titles,
+                  limss,
+                  cmps,
+                  norms=None,
+                  binsizes=None,
+                  extra_order = None,
+                  hmss_order = None,
+                  fillmissing=False,
+                  interpolation="nearest"
+                 ):
+    """
+    plot a buch of stackups ...
+    """
+    # rewrite everyhting assuming hmss is a dict of stackup groups !
+    # groups are plotted on top of each other ...
+    
+    if extra_plots is None:
+        extra_plots = []
+    # regardless - claculate number of axes for stackups ...
+    num_stackup_groups = len(hmss)
+    # pick in every stackup group and see how many are there
+    num_stackups = max(len(hmss[k]) for k in hmss)
+    num_rows = num_stackups + len(extra_plots)
+    # let's figure out - how tall is this stackup
+    # get heights of stackups from each groups
+    stackup_group_heights = [len(hmss[k][0]) for k in hmss]
+    stackup_height = sum(stackup_group_heights)*12/10_000
+    figure_height = stackup_height + 2.5
+    fig = plt.figure(
+        figsize=(3.5*num_rows, figure_height),
+        facecolor="white",
+        constrained_layout=True
+    )
+    gs = fig.add_gridspec(
+        num_stackup_groups+2,
+        num_rows,
+        width_ratios=[1]*num_rows,
+        height_ratios = \
+            [0.95*2.5/figure_height] + \
+            [(_h/sum(stackup_group_heights))*(figure_height-2.5)/figure_height for _h in stackup_group_heights] + \
+            [0.05*2.5/figure_height]
+    )
+
+    ax_profile = {}
+    ax_stackup = {}
+    ax_xtra = OrderedDict()
+    ax_cbar = {}
+    # let's define order
+    if extra_order is None:
+        extra_order = list( range(len(extra_plots)) )
+    if hmss_order is None:
+        hmss_order = list( range(len(extra_plots), num_rows) )
+    # replace following with the pre-defined column indexes ...
+    for idx in hmss_order:
+        ax_profile[idx] = fig.add_subplot(gs[0,idx])
+        ax_stackup[idx] = [fig.add_subplot(gs[_i+1,idx]) for _i in range(num_stackup_groups)] # stackup groups ...
+        ax_cbar[idx] = fig.add_subplot(gs[-1,idx])
+    for idx in extra_order:
+        ax_xtra[idx] = [fig.add_subplot(gs[_i+1,idx]) for _i in range(num_stackup_groups)] # stackup groups ...
+
+    hm_arr = {}
+    profile_hm = {}
+    # for each group of stackups (vertically set)
+    for group_id, k in enumerate(hmss):
+        hm_arr[group_id] = {}
+        profile_hm[group_id] = {}
+        # for every stackup in each group (horizontal set)
+        for idx, hm in zip(hmss_order, hmss[k]):
+            if fillmissing:
+                X = hm[:]
+                missing = ~np.isfinite(X)
+                mu = np.nanmean(X, axis=0, keepdims=True) # axis 0 or 1 - rows or columns ?!
+                hm_arr[group_id][idx] = np.where(missing, mu, X)
+            else:
+                hm_arr[group_id][idx] = hm[:]
+            profile_hm[group_id][idx] = np.nanmean(hm_arr[group_id][idx],axis=0)
+    
+    # turning some of the input parameters into "oredered" or labeled dicts ...
+    if norms is None:
+        norms = { _i:None for _i in hmss_order}
+    else:
+        norms = { _i:norms[i] for i,_i in enumerate(hmss_order)}
+    vlims = { _i:limss[i] for i,_i in enumerate(hmss_order)}
+    titles = { _i:titles[i] for i,_i in enumerate(hmss_order)}
+    if binsizes is None:
+        binsizes = { _i:1 for _i in hmss_order}
+    else:
+        binsizes = { _i:binsizes[i] for i,_i in enumerate(hmss_order)}
+
+    for idx, cmap in zip(hmss_order, cmps):
+        # plot profiles from every group on a single common axis for profiles...
+        for _i in range(num_stackup_groups):
+            ax_profile[idx].plot(profile_hm[_i][idx])
+        ax_profile[idx].set_yscale("linear" if norms[idx] is None else "log")
+        # stackups for every group ...
+        for _i in range(num_stackup_groups):
+            stack_hm = ax_stackup[idx][_i].imshow(
+                              hm_arr[_i][idx],
+                              norm=norms[idx],
+                              aspect="auto",
+                              vmin=vlims[idx][0],
+                              vmax=vlims[idx][1],
+                              cmap=cmap,
+                              interpolation=interpolation,
+            )
+        # beautify ...
+        group_id_beautify = 0
+        first_bin = 0-.5
+        center_bin = hm_arr[group_id_beautify][idx].shape[1]/2 - .5
+        last_bin = hm_arr[group_id_beautify][idx].shape[1]-.5
+        ax_profile[idx].set_xlim([first_bin, last_bin])
+        ax_profile[idx].set_ylim(vlims[idx])
+        ax_profile[idx].set_title(titles[idx])
+        # human readable kb stuff:
+        flank_in_kb = int((center_bin+.5)*binsizes[idx]/1000)
+        flank_ticks = [first_bin, center_bin, last_bin]
+        flank_ticklabels = [-flank_in_kb, 0, flank_in_kb]
+        ax_profile[idx].set_xticks(flank_ticks)
+        ax_profile[idx].set_xticklabels(flank_ticklabels)
+        for _i in range(num_stackup_groups-1):
+            ax_stackup[idx][_i].set_xticks([])
+            ax_stackup[idx][_i].set_xticklabels([])
+            ax_stackup[idx][_i].set_yticks([])
+            ax_stackup[idx][_i].set_yticklabels([])
+        # bottom one - show ticks for now ...
+        ax_stackup[idx][_i+1].set_xticks(flank_ticks)
+        ax_stackup[idx][_i+1].set_xticklabels(flank_ticklabels)
+        ax_stackup[idx][_i+1].set_yticks([])
+        ax_stackup[idx][_i+1].set_yticklabels([])
+        plt.colorbar(stack_hm,cax=ax_cbar[idx],orientation="horizontal")
+        
+    return ax_xtra
 
 
 def generate_random_bed(num_intervals, db, footprint=1_000, trunc=10_000):
