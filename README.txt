@@ -10,7 +10,7 @@ R-loop boundaries NO CTCF NO G4 do not show cohesin accumulation. Are they compa
 ## BED File locations
 
 # The different categories used in the paper
-R-loops NO CTCF G4
+# R-loops NO CTCF G4
 /nl/umw_job_dekker/users/av90w/projects/for-paper/for-higlass/diff-cat/intersect-Rloops-NO-all-NT-CTCF-G4-Mao
 R-loops NO CTCF NO G4 (####### THIS IS THE CATEGORY WE WOULD KNOW IF THEY ARE COMPARTMENTS BOUNDARIES)
 /nl/umw_job_dekker/users/av90w/projects/for-paper/for-higlass/diff-cat/intersect-Rloops-NO-all-NT-CTCF-NO-G4-Mao
@@ -26,16 +26,30 @@ CTCF R-loops NO G4
 # ALL R-loops
 /nl/umw_job_dekker/users/av90w/projects/for-paper/for-higlass/GSM1720619_K562_DRIP_peaks-sort.bed
 
+# G4 different categories
+/nl/umw_job_dekker/users/av90w/ChIPseq/ChIP4/deeptools/G4/mao/intersect-G4-NO-CTCF
+/nl/umw_job_dekker/users/av90w/ChIPseq/ChIP4/deeptools/G4/mao/intersect-all-NT-CTCF-G4
+/nl/umw_job_dekker/users/av90w/ChIPseq/ChIP4/deeptools/G4/mao/intersect-all-NT-CTCF-NO-G4
+
+# G4 different categories CENTERED on peaks
+/nl/umw_job_dekker/users/av90w/ChIPseq/ChIP4/deeptools/G4/mao/recenter/
+intersect-all-NT-CTCF-G4-centered
+intersect-all-NT-CTCF-NO-G4-centered
+intersect-G4-NO-CTCF-centered
+
 # ALL G4
 /nl/umw_job_dekker/users/av90w/projects/for-paper/for-higlass/G4-Mao-sort
 
 # ChIP seq peaks
 CTCF peaks
-/nl/umw_job_dekker/users/av90w/projects/for-paper/for-higlass/NT-CTCF-narrowPeaks-sort-merge
+/nl/umw_job_dekker/users/av90w/ChIPseq/ChIP4/MACS2/narrow0.01/NT-CTCF-narrowPeaks-sort-merge-with-strength.bed
+/nl/umw_job_dekker/users/av90w/ChIPseq/ChIP4/MACS2/narrow0.01/IAA-CTCF-narrowPeaks-sort-merge-with-strength.bed
 DDX55 peaks
-/nl/umw_job_dekker/users/av90w/projects/for-paper/for-higlass/NT-DDX55-narrowPeaks-sort-merge
+/nl/umw_job_dekker/users/av90w/ChIPseq/ChIP4/MACS2/narrow0.01/NT-DDX55-narrowPeaks-sort-merge-with-strength.bed
+/nl/umw_job_dekker/users/av90w/ChIPseq/ChIP4/MACS2/narrow0.01/IAA-DDX55-narrowPeaks-sort-merge-with-strength.bed
 RAD21 peaks
-/nl/umw_job_dekker/users/av90w/projects/for-paper/for-higlass/NT-RAD21-narrowPeaks-sort-merge
+/nl/umw_job_dekker/users/av90w/ChIPseq/ChIP4/MACS2/narrow0.01/NT-RAD21-narrowPeaks-sort-merge-with-strength.bed
+/nl/umw_job_dekker/users/av90w/ChIPseq/ChIP4/MACS2/narrow0.01/IAA-RAD21-narrowPeaks-sort-merge-with-strength.bed
 
 # splicing events
 # In CTCF degron after CTCF depletion
@@ -44,6 +58,10 @@ RAD21 peaks
 /nl/umw_job_dekker/users/av90w/projects/for-paper/for-higlass/AAVS1_sg24_NT_DDX55_sg2B_NT.output_events_all_select_hg19.txt
 
 ## coolers
+
+#coolers used for insulation on fig1
+/nl/umw_job_dekker/users/av90w/cooler/20210323_merge_more_lib_same/NT/CkoCT442-NT-pool.mcool
+/nl/umw_job_dekker/users/av90w/cooler/20210323_merge_more_lib_same/IAA/CkoCT442-IAA-pool.mcool
 
 # HAP1 mother cell line
 # to merge together to have more reads? (both sets)
@@ -103,6 +121,11 @@ CkoCT442-NT-si-ctrl-R1-T1__hg19.hg19.mapq_30.1000.mcool
 CkoCT442-NT-si-ctrl-R2-T1__hg19.hg19.mapq_30.1000.mcool
 /nl/umw_job_dekker/users/av90w/distiller-run/20200805_G1sorted_442_replicate/results/coolers_library
 CkoCT442-G1-NT-R2-T1__hg19.hg19.mapq_30.1000.mcool
+#NT libraries I forgot to add to our non treated pool:
+/nl/umw_job_dekker/users/av90w/distiller-run/20201110-PDS-PlaB-rep2/results/coolers_library
+CkoCT442-NT-R3-T1__hg19.hg19.mapq_30.1000.mcool
+CkoCT442-NT-R4-T1__hg19.hg19.mapq_30.1000.mcool
+/nl/umw_job_dekker/users/av90w/distiller-run/20201119-cPDS-rep2/results/coolers_library/CkoCT442-NT-R5-T1__hg19.hg19.mapq_30.1000.mcool
 
 #libraries to merge together for compartment IAA treated
 /nl/umw_job_dekker/users/av90w/distiller-run/20200220_mapping_for_dot_calling/results/coolers_library
@@ -111,6 +134,23 @@ CkoCT442-IAA-si-ctrl-R2-T1__hg19.hg19.mapq_30.1000.mcool
 CkoC442-IAA48H-R1-T1__hg19.hg19.mapq_30.1000.mcool
 CkoC442-IAA48H-R2-T1__hg19.hg19.mapq_30.1000.mcool
 /nl/umw_job_dekker/users/av90w/distiller-run/20200805_G1sorted_442_replicate/results/coolers_library_group/G1-IAA.hg19.mapq_30.1000.mcool
+#IAA libraries I forgot to add to our IAA treated pool:
+/nl/umw_job_dekker/users/av90w/distiller-run/20201110-PDS-PlaB-rep2/results/coolers_library
+CkoCT442-IAA-R3-T1__hg19.hg19.mapq_30.1000.mcool
+CkoCT442-IAA-R4-T1__hg19.hg19.mapq_30.1000.mcool
+/nl/umw_job_dekker/users/av90w/distiller-run/20201119-cPDS-rep2/results/coolers_library/CkoCT442-IAA-R5-T1__hg19.hg19.mapq_30.1000.mcool
+
+#PDS libraries:
+/nl/umw_job_dekker/users/av90w/distiller-run/20201110-PDS-PlaB-rep2/results/coolers_library
+CkoCT442-NT-PDS-R1-T1__hg19.hg19.mapq_30.1000.mcool
+CkoCT442-NT-PDS-R2-T1__hg19.hg19.mapq_30.1000.mcool
+CkoCT442-IAA-PDS-R1-T1__hg19.hg19.mapq_30.1000.mcool
+CkoCT442-IAA-PDS-R2-T1__hg19.hg19.mapq_30.1000.mcool
+
+#pooled PDS libraries
+/nl/umw_job_dekker/users/av90w/distiller-run/20201110-PDS-PlaB-rep2/results/coolers_library_group
+NT-PDS.hg19.mapq_30.1000.mcool
+IAA-PDS.hg19.mapq_30.1000.mcool
 
 ## compartment files
 
@@ -164,6 +204,14 @@ rep2
 #input controls for RAD21 R1, DDX55 R1
 /nl/umw_job_dekker/users/av90w/ChIPseq/fastq/test-ChIP2/new-mapping/results/bwa/mergedLibrary/bigwig/NT-input_R1.mLb.clN.bigWig
 /nl/umw_job_dekker/users/av90w/ChIPseq/fastq/test-ChIP2/new-mapping/results/bwa/mergedLibrary/bigwig/IAA-input_R1.mLb.clN.bigWig
+
+#K562 G4 ChIP-seq bigwig
+#to download for eg: wget ftp://ftp.ncbi.nlm.nih.gov/geo/samples/GSM1720nnn/GSM1720619/suppl/GSM1720619_K562_DRIP_peaks.bed.gz
+GSM2876090_B_REP1.SLX-12319.K562_asynch_a_701_504.clean.bw
+GSM2876091_B_REP1.SLX-12319.K562_asynch_c_703_504.clean.bw
+GSM2876093_B_REP2.SLX-12320.K562_P9_Async_c_701_503.rmdup.clean.bw
+GSM2876094_B_REP2.SLX-12320.K562_P9_Async_b_701_502.rmdup.clean.bw
+GSM2876095_B_REP2.SLX-12320.K562_P9_Async_a_701_517.rmdup.clean.bw
 
 ## RNA seq
 /nl/umw_job_dekker/users/av90w/RNAseq/data/siRNA/report2546/bigwig_star/S442_NT.bw
