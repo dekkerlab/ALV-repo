@@ -50,6 +50,9 @@ DDX55 peaks
 RAD21 peaks
 /nl/umw_job_dekker/users/av90w/ChIPseq/ChIP4/MACS2/narrow0.01/NT-RAD21-narrowPeaks-sort-merge-with-strength.bed
 /nl/umw_job_dekker/users/av90w/ChIPseq/ChIP4/MACS2/narrow0.01/IAA-RAD21-narrowPeaks-sort-merge-with-strength.bed
+TAF5L peaks
+/nl/umw_job_dekker/users/av90w/ChIPseq/ChIP4/MACS2/narrow0.01/NT-TAF5L-narrowPeaks-sort-merge-with-strength.bed
+/nl/umw_job_dekker/users/av90w/ChIPseq/ChIP4/MACS2/narrow0.01/IAA-TAF5L-narrowPeaks-sort-merge-with-strength.bed
 
 # splicing events
 # In CTCF degron after CTCF depletion
@@ -192,8 +195,16 @@ rep2
 /nl/umw_job_dekker/users/av90w/ChIPseq/fastq/ChIP3/results/bwa/mergedLibrary/bigwig/NT-DDX55_R1.mLb.clN.bigWig
 /nl/umw_job_dekker/users/av90w/ChIPseq/fastq/ChIP3/results/bwa/mergedLibrary/bigwig/IAA-DDX55_R1.mLb.clN.bigWig
 
+#TAF5L bigWig
+rep1
+/nl/umw_job_dekker/users/av90w/ChIPseq/fastq/test-ChIP2/new-mapping/results/bwa/mergedLibrary/bigwig/NT-TAF5L_R1.mLb.clN.bigWig
+/nl/umw_job_dekker/users/av90w/ChIPseq/fastq/test-ChIP2/new-mapping/results/bwa/mergedLibrary/bigwig/IAA-TAF5L_R1.mLb.clN.bigWig
+rep2
+/nl/umw_job_dekker/users/av90w/ChIPseq/fastq/ChIP3/results/bwa/mergedLibrary/bigwig/NT-TAF5L_R1.mLb.clN.bigWig
+/nl/umw_job_dekker/users/av90w/ChIPseq/fastq/ChIP3/results/bwa/mergedLibrary/bigwig/IAA-TAF5L_R1.mLb.clN.bigWig
+
 #input control bigwig
-#input controls for IAA RAD21 R2, CTCF R1, DDX55 R2
+#input controls for IAA RAD21 R2, CTCF R1, DDX55 R2, TAF5L R2
 /nl/umw_job_dekker/users/av90w/ChIPseq/fastq/ChIP3/results/bwa/mergedLibrary/bigwig/NT-input_R1.mLb.clN.bigWig 
 /nl/umw_job_dekker/users/av90w/ChIPseq/fastq/ChIP3/results/bwa/mergedLibrary/bigwig/IAA-input_R1.mLb.clN.bigWig 
 
@@ -201,7 +212,7 @@ rep2
 /nl/umw_job_dekker/users/av90w/ChIPseq/fastq/ChIP4-bis/results/bwa/mergedLibrary/bigwig/NT-input_R2.mLb.clN.bigWig
 /nl/umw_job_dekker/users/av90w/ChIPseq/fastq/ChIP4-bis/results/bwa/mergedLibrary/bigwig/IAA-input_R2.mLb.clN.bigWig
 
-#input controls for RAD21 R1, DDX55 R1
+#input controls for RAD21 R1, DDX55 R1, TAF5L R1
 /nl/umw_job_dekker/users/av90w/ChIPseq/fastq/test-ChIP2/new-mapping/results/bwa/mergedLibrary/bigwig/NT-input_R1.mLb.clN.bigWig
 /nl/umw_job_dekker/users/av90w/ChIPseq/fastq/test-ChIP2/new-mapping/results/bwa/mergedLibrary/bigwig/IAA-input_R1.mLb.clN.bigWig
 
