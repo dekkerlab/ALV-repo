@@ -40,6 +40,15 @@ intersect-G4-NO-CTCF-centered
 # ALL G4
 /nl/umw_job_dekker/users/av90w/projects/for-paper/for-higlass/G4-Mao-sort
 
+#for Fig4
+/nl/umw_job_dekker/users/av90w/ChIPseq/ChIP4/deeptools/
+NT-CTCF-narrowPeak-noDDX55
+NT-CTCF-narrowPeak-withDDX55
+NT-DDX55-narrowPeak-noCTCF
+IAA-CTCF-narrowPeak-noDDX55
+IAA-CTCF-narrowPeak-withDDX55
+IAA-DDX55-narrowPeak-noCTCF
+
 # ChIP seq peaks
 CTCF peaks
 /nl/umw_job_dekker/users/av90w/ChIPseq/ChIP4/MACS2/narrow0.01/NT-CTCF-narrowPeaks-sort-merge-with-strength.bed
