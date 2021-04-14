@@ -4,6 +4,12 @@
 /nl/umw_job_dekker/users/av90w/cooler/20210323_merge_more_lib_same/NT/CkoCT442-NT-pool.mcool
 /nl/umw_job_dekker/users/av90w/cooler/20210323_merge_more_lib_same/IAA/CkoCT442-IAA-pool.mcool
 
+## Pool HAP1 WT, NO TIR1 and TIR1
+/nl/umw_job_dekker/users/av90w/cooler/20210408_merge_NO_TIR1_44/CkoC44-NO-TIR1-pool.mcool
+/nl/umw_job_dekker/users/av90w/cooler/downsampling/Hap1-WT-combined-500000000.mcool
+/nl/umw_job_dekker/users/av90w/cooler/downsampling/CkoCT442-NT-pool-500000000.mcool
+/nl/umw_job_dekker/users/av90w/cooler/downsampling/CkoCT442-IAA-pool-500000000.mcool
+
 ## Pool HAP1 WT and PolII degron NT and IAA
 /nl/umw_job_dekker/users/av90w/cooler/Hap1-WT-combined.mcool
 /nl/umw_job_dekker/users/av90w/cooler/downsampling/PTB2539-NT-pool-800000000.mcool
