@@ -4,6 +4,11 @@
 /nl/umw_job_dekker/users/av90w/cooler/20210323_merge_more_lib_same/NT/CkoCT442-NT-pool.mcool
 /nl/umw_job_dekker/users/av90w/cooler/20210323_merge_more_lib_same/IAA/CkoCT442-IAA-pool.mcool
 
+## Pool HAP1 WT and PolII degron NT and IAA
+/nl/umw_job_dekker/users/av90w/cooler/Hap1-WT-combined.mcool
+/nl/umw_job_dekker/users/av90w/cooler/downsampling/PTB2539-NT-pool-800000000.mcool
+/nl/umw_job_dekker/users/av90w/cooler/downsampling/PTB2539-IAA-pool-800000000.mcool
+
 # HAP1 mother cell line
 # to merge together to have more reads? (both sets)
 #set #1
