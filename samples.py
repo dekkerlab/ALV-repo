@@ -63,11 +63,68 @@ samples["ddx_noCTCF"] = {"fname":"IAA-DDX55_R1.mLb.clN.bigWig",
                    "crange":(0,.4),
                    "cmap":cmap3,
                   }
+# add TAF5L for fun ...
+samples["taf5l_CTCF"] = {"fname":"NT-TAF5L_R1.mLb.clN.bigWig",
+                   "binsize":200,
+                   "flank":5_000,
+                   "crange":(0,.4),
+                   "cmap":cmap3,
+                  }
+samples["taf5l_noCTCF"] = {"fname":"IAA-TAF5L_R1.mLb.clN.bigWig",
+                   "binsize":200,
+                   "flank":5_000,
+                   "crange":(0,.4),
+                   "cmap":cmap3,
+                  }
+# add input-control for fun ...
+# input controls for RAD21 R1, DDX55 R1, TAF5L R1
+samples["input_CTCF"] = {"fname":"NT-input_R1.mLb.clN.bigWig",
+                   "binsize":200,
+                   "flank":5_000,
+                   "crange":(0,.4),
+                   "cmap":cmap3,
+                  }
+samples["input_noCTCF"] = {"fname":"IAA-input_R1.mLb.clN.bigWig",
+                   "binsize":200,
+                   "flank":5_000,
+                   "crange":(0,.4),
+                   "cmap":cmap3,
+                  }
 # add RNA-PolII
 samples["polII"] = {"fname":"PolIIChipSeq-Hap1.bw",
                    "binsize":200,
                    "flank":5_000,
                    "crange":(0,.7),
+                   "cmap":cmap3,
+                  }
+# add H3K4 public
+# HAP1_H3K4me3_WT_K4_1.bw  HAP1_H3K4me3_WT_K4_2.bw  HAP1_Input_WT_K4-control.bw
+samples["h3k4_r1"] = {"fname":"HAP1_H3K4me3_WT_K4_1.bw",
+                   "binsize":200,
+                   "flank":5_000,
+                   "crange":(0,10.),
+                   "cmap":cmap3,
+                  }
+samples["h3k4_r2"] = {"fname":"HAP1_H3K4me3_WT_K4_2.bw",
+                   "binsize":200,
+                   "flank":5_000,
+                   "crange":(0,10.),
+                   "cmap":cmap3,
+                  }
+samples["h3k4_input"] = {"fname":"HAP1_Input_WT_K4-control.bw",
+                   "binsize":200,
+                   "flank":5_000,
+                   "crange":(0,10.),
+                   "cmap":cmap3,
+                  }
+
+# K562 data to compare with the G4 as well ...
+# K562_ChIP_seqMerge_H3K4me3_v2
+# K562_ChIP_exoMerge_H3K4me3.bw
+samples["h3k4_k562"] = {"fname":"K562_ChIP_seqMerge_H3K4me3_v2.bw",
+                   "binsize":200,
+                   "flank":5_000,
+                   "crange":(0,10.),
                    "cmap":cmap3,
                   }
 
@@ -90,17 +147,31 @@ samples["ins_noCTCF"] = {"fname":f"CkoCT442_IAA_pool.hg19.{ins_binsize_human}.{i
                   }
 
 # add compartment status signal here in the samples ...
-ev_binsize = 25_000
+ev_binsize = 10_000
 ev_binsize_human = f"{int(ev_binsize/1000)}kb"
-samples["ev1_CTCF"] = {"fname": f"allcools.EV1.{ev_binsize_human}.bw",
+samples["ev1_CTCF"] = {"fname": f"CkoCT442_NT_pool.hg19.EV.{ev_binsize_human}.bw",
                    "binsize":ev_binsize,
-                   "flank":4*ev_binsize,
+                   "flank":5*ev_binsize,
                    "crange":(-1.,1.),
                    "cmap":cmap1,
                   }
-samples["ev1_noCTCF"] = {"fname": f"noCTCF_IAA_combined.EV1.{ev_binsize_human}.bw",
+samples["ev1_noCTCF"] = {"fname": f"CkoCT442_IAA_pool.hg19.EV.{ev_binsize_human}.bw",
                    "binsize":ev_binsize,
-                   "flank":4*ev_binsize,
+                   "flank":5*ev_binsize,
                    "crange":(-1.,1.),
                    "cmap":cmap1,
+                  }
+
+# rna-seq ...
+samples["mrna_ctcf"] = {"fname": "S442_NT.bw",
+                   "binsize":200,
+                   "flank":5000,
+                   "crange":(.0,2000.),
+                   "cmap":cmap3,
+                  }
+samples["mrna_noctcf"] = {"fname": "S442_IAA.bw",
+                   "binsize":200,
+                   "flank":5000,
+                   "crange":(.0,2000.),
+                   "cmap":cmap3,
                   }

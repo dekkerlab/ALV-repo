@@ -277,62 +277,59 @@ def plot_stackups(
                   cmps,
                   norms=None,
                   binsizes=None,
-                  fname="xxx.png",
+                  extra_order = None,
+                  hmss_order = None,
                   fillmissing=False,
                   interpolation="nearest"
                  ):
     """
     plot a buch of stackups ...
     """
-    if extra_plots is not None:
-        num_stackups = len(hmss) + len(extra_plots)
-    else:
+    if extra_plots is None:
         extra_plots = []
-        num_stackups = len(hmss)
+    # how many stackups are there
+    num_stackups = len(hmss)
+    num_rows = num_stackups + len(extra_plots) 
     # let's figure out - how tall is this stackup
-    stackup_height = len(hmss[0])*12/10_000
+    # get heights of stackups from each groups
+    stackup_items = len(hmss[0])
+    stackup_height = stackup_items*12/10_000
     figure_height = stackup_height + 2.5
     fig = plt.figure(
-        figsize=(3.5*num_stackups, figure_height),
+        figsize=(3.5*num_rows, figure_height),
         facecolor="white",
         constrained_layout=True
     )
     gs = fig.add_gridspec(
-        3,
-        num_stackups,
-        width_ratios=[1]*num_stackups,
-        height_ratios=[
-            0.95*2.5/figure_height,
-            (figure_height-2.5)/figure_height,
-            0.05*2.5/figure_height
-        ]
+        1+2, # average plot, stackup and colorbar ...
+        num_rows,
+        width_ratios=[1]*num_rows,
+        height_ratios = \
+            [0.95*2.5/figure_height] + \
+            [(figure_height-2.5)/figure_height] + \
+            [0.05*2.5/figure_height]
     )
 
     ax_profile = {}
     ax_stackup = {}
+    ax_xtra = OrderedDict()
     ax_cbar = {}
-    for idx in range(len(extra_plots), num_stackups):
+    # let's define order
+    if extra_order is None:
+        extra_order = list( range(len(extra_plots)) )
+    if hmss_order is None:
+        hmss_order = list( range(len(extra_plots), num_rows) )
+    # replace following with the pre-defined column indexes ...
+    for idx in hmss_order:
         ax_profile[idx] = fig.add_subplot(gs[0,idx])
         ax_stackup[idx] = fig.add_subplot(gs[1,idx])
         ax_cbar[idx] = fig.add_subplot(gs[2,idx])
-    for idx in range(len(extra_plots)):
-        ax_stackup[idx] = fig.add_subplot(gs[1,idx])
-        
-    for idx in range(len(extra_plots)):
-        _y,_width,_color = extra_plots[idx]
-        #         ax_stackup[idx].barh(_y,_width,1,color=_color,edgecolor="dimgray")
-        ax_stackup[idx].step(_width,_y,color="dimgray")
-        ax_stackup[idx].fill_betweenx(_y,0,_width,color=_color,step="post")
-        ax_stackup[idx].invert_yaxis()
-        ax_stackup[idx].invert_xaxis()
-        ax_stackup[idx].yaxis.set_major_formatter(ticker.FuncFormatter(lambda x,pos: f"{int(x*100)}"))
-        ax_stackup[idx].set_ylim(max(_y),0)
-        ax_stackup[idx].set_xlim(max(_width),0)
+    for idx in extra_order:
+        ax_xtra[idx] = fig.add_subplot(gs[1,idx])
 
     hm_arr = {}
     profile_hm = {}
-    vlims = {}
-    for idx,(hm,lms) in enumerate(zip(hmss,limss)):
+    for idx, hm in zip(hmss_order, hmss):
         if fillmissing:
             X = hm[:]
             missing = ~np.isfinite(X)
@@ -341,41 +338,47 @@ def plot_stackups(
         else:
             hm_arr[idx] = hm[:]
         profile_hm[idx] = np.nanmean(hm_arr[idx],axis=0)
-        vlims[idx] = lms
+    # turning some of the input parameters into "oredered" or labeled dicts ...
+    if norms is None:
+        norms = { _i:None for _i in hmss_order}
+    else:
+        norms = { _i:norms[i] for i,_i in enumerate(hmss_order)}
+    vlims = { _i:limss[i] for i,_i in enumerate(hmss_order)}
+    titles = { _i:titles[i] for i,_i in enumerate(hmss_order)}
+    if binsizes is None:
+        binsizes = { _i:1 for _i in hmss_order}
+    else:
+        binsizes = { _i:binsizes[i] for i,_i in enumerate(hmss_order)}
 
-    for idx,cmap in enumerate(cmps):
-        ax_profile[idx+len(extra_plots)].plot(profile_hm[idx],"k-")
-        if norms is not None:
-            ax_profile[idx+len(extra_plots)].set_yscale("linear" if norms[idx] is None else "log")
-        stack_hm = ax_stackup[idx+len(extra_plots)].imshow(
+    for idx, cmap in zip(hmss_order, cmps):
+        ax_profile[idx].plot(profile_hm[idx],"k-")
+        ax_profile[idx].set_yscale("linear" if norms[idx] is None else "log")
+        stack_hm = ax_stackup[idx].imshow(
                           hm_arr[idx],
-                          norm=None if norms is None else norms[idx],
+                          norm=norms[idx],
                           aspect="auto",
-                          vmin=limss[idx][0],
-                          vmax=limss[idx][1],
+                          vmin=vlims[idx][0],
+                          vmax=vlims[idx][1],
                           cmap=cmap,
                           interpolation=interpolation
         )
         # beautify ...
         center_bin = hm_arr[idx].shape[1]/2 - .5
-        ax_profile[idx+len(extra_plots)].set_ylim(vlims[idx])
-        ax_profile[idx+len(extra_plots)].set_title(titles[idx])
-        # ax_profile[idx+len(extra_plots)].axvline(center_bin, color="grey")
-        # ax_stackup[idx+len(extra_plots)].axvline(center_bin, color="grey")
+        ax_profile[idx].set_ylim(vlims[idx])
+        ax_profile[idx].set_title(titles[idx])
         if binsizes is not None:
             flank_in_kb = int((center_bin+.5)*binsizes[idx]/1000)
             flank_ticks = [0-.5,center_bin,hm_arr[idx].shape[1]-.5]
             flank_ticklabels = [-flank_in_kb,0,flank_in_kb]
-            ax_profile[idx+len(extra_plots)].set_xticks(flank_ticks)
-            ax_profile[idx+len(extra_plots)].set_xticklabels(flank_ticklabels)
-            ax_stackup[idx+len(extra_plots)].set_xticks(flank_ticks)
-            ax_stackup[idx+len(extra_plots)].set_xticklabels(flank_ticklabels)
-        plt.colorbar(stack_hm,cax=ax_cbar[idx+len(extra_plots)],orientation="horizontal")
-        
-    for idx in range(1, num_stackups):
+            ax_profile[idx].set_xticks(flank_ticks)
+            ax_profile[idx].set_xticklabels(flank_ticklabels)
+            ax_stackup[idx].set_xticks(flank_ticks)
+            ax_stackup[idx].set_xticklabels(flank_ticklabels)
+        plt.colorbar(stack_hm,cax=ax_cbar[idx],orientation="horizontal")
+        # remove ticks
         ax_stackup[idx].set_yticks([])
 
-    plt.savefig(fname)
+    return ax_xtra
 
 def plot_stackups_sets(
                   extra_plots,
@@ -512,6 +515,69 @@ def plot_stackups_sets(
         plt.colorbar(stack_hm,cax=ax_cbar[idx],orientation="horizontal")
         
     return ax_xtra
+
+def get_4cstackup(clr, features_df, binsize=None, flank=5000, fill_missing=np.nan, ignore_diags=2):
+    """
+    extract 4C profiles (3-bin averaged values along the rows of Hi-C matrix) for
+    "small" genomic intervals in features_df ("small" ~<  binsize).
+    
+    This gets tricky very quickly ! (mostly because of edge-cases
+    - features near chromosome starts and ends ...)
+    
+    To be safe, robust and reliable we do it in several steps:
+     - align features with the bins of the cooler. 1 feature -> 1 bin
+     - expand features according to flank, minding the chromosomal limits !
+     - for every expanded feature extract a 4C profile and assign to mat separately
+       for left and right "halfs" to avoid edge-case type of issues ...
+       
+    the center column of the returned mat corresponds to the main diagonal of Hi-C matrix
+    """
+    if binsize is None:
+        binsize = clr.binsize
+    # flank - should be multiples of binsize ...
+    assert flank % binsize == 0
+    flank_bins = flank // binsize
+    
+    # align features with the bins
+    anchor_center_aligned = .5*(features_df["start"]+features_df["end"])
+    anchor_center_aligned = binsize * (anchor_center_aligned/binsize).astype(int)
+    #
+    anchor_df = copy(features_df) # we'll be modifying it ...
+    anchor_df["start"] = anchor_center_aligned
+    anchor_df["end"]   = anchor_center_aligned + binsize # edge effects isn't fully solved
+    
+    # prepare an output matrix:
+    mat = np.full((2*flank_bins+1, len(anchor_df)), fill_missing, "float")
+    
+    # dealing with features close to chromosome ends and starts using bioframe:
+    expand_anchor_df = bioframe.expand(
+        copy(anchor_df), # importan ! otherwise anchor_df is modified inplace !
+        flank,
+        limits=clr.chromsizes.to_dict(),
+    )
+    
+    for n in expand_anchor_df.itertuples(index=True):
+        # coordinates of an expanded anchor:
+        i,c,s,e = n
+        # coordinates of the true-central bin:
+        _c,_s,_e = anchor_df.loc[i] # need this to deal with edge-effects
+        # extract bin ids of those:
+        icenter = clr.offset((_c,_s,_e))
+        ifrom, ito = clr.extent((c,s,e))
+        # extract a row of a Hi-C matrix (3-rows average, actually) for the expanded range:
+        mat_row = np.nanmean(clr.matrix()[icenter-1:icenter+2, ifrom:ito], axis=0)
+        # now carefully assign that to the "empty" mat - dealing with edge cases
+        left_half = (ifrom - icenter + flank_bins, 0 + flank_bins) # relative to mat
+        right_half = (0 + flank_bins, ito - icenter + flank_bins) # relative to mat
+        # that's it:
+        mat[slice(*left_half),i] = mat_row[:(icenter - ifrom)]
+        mat[slice(*right_half),i] = mat_row[(icenter - ito):]
+    # ignore diags ...
+    for i in range(ignore_diags):
+        mat[flank_bins + i] = np.nan
+        mat[flank_bins - i] = np.nan
+    #return output
+    return mat.T
 
 
 def generate_random_bed(num_intervals, db, footprint=1_000, trunc=10_000):
