@@ -86,14 +86,23 @@ intersect-G4-NO-CTCF-centered
 # ALL G4
 /nl/umw_job_dekker/users/av90w/projects/for-paper/for-higlass/G4-Mao-sort
 
-#for Fig4
-/nl/umw_job_dekker/users/av90w/ChIPseq/ChIP4/deeptools/
-NT-CTCF-narrowPeak-noDDX55
-NT-CTCF-narrowPeak-withDDX55
-NT-DDX55-narrowPeak-noCTCF
-IAA-CTCF-narrowPeak-noDDX55
-IAA-CTCF-narrowPeak-withDDX55
-IAA-DDX55-narrowPeak-noCTCF
+# Locations of the files for DDX55 for fig4:
+/nl/umw_job_dekker/users/av90w/ChIPseq/ChIP4/MACS2/narrow0.01
+NT-CTCF-narrowPeak-withDDX55-centered-CTCF
+NT-CTCF-narrowPeak-noDDX55-centered-CTCF
+NT-DDX55-narrowPeak-noCTCF-centered-DDX55
+IAA-CTCF-narrowPeak-withDDX55-centered-CTCF
+IAA-CTCF-narrowPeak-noDDX55-centered-CTCF
+IAA-DDX55-narrowPeak-noCTCF-centered-DDX55
+
+# Locations of the files for TAF5L for fig4:
+/nl/umw_job_dekker/users/av90w/ChIPseq/ChIP4/MACS2/narrow0.01
+NT-CTCF-narrowPeak-withTAF5L-centered-CTCF
+NT-CTCF-narrowPeak-noTAF5L-centered-CTCF
+NT-TAF5L-narrowPeak-noCTCF-centered-TAF5L
+IAA-CTCF-narrowPeak-withTAF5L-centered-CTCF
+IAA-CTCF-narrowPeak-noTAF5L-centered-CTCF
+IAA-TAF5L-narrowPeak-noCTCF-centered-TAF5L
 
 # ChIP seq peaks
 CTCF peaks

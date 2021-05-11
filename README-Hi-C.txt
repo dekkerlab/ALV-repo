@@ -52,6 +52,22 @@ NT
 IAA
 /nl/umw_job_dekker/users/av90w/distiller-run/20200220_mapping_for_dot_calling/results/coolers_library/CkoCT442-AAVS1sg2-4-IAA-R1-T1__hg19.hg19.mapq_30.1000.mcool
 
+# locations of the pooled DDX55 and TAF5L clone mcool:
+/nl/umw_job_dekker/users/av90w/cooler/20210413_merge_same_depth/CkoCT442-AAVS1-NT-pool.mcool
+/nl/umw_job_dekker/users/av90w/cooler/20210413_merge_same_depth/CkoCT442-AAVS1-IAA-pool.mcool
+/nl/umw_job_dekker/users/av90w/distiller-run/20190924_CTCF_screen_clones_morereads/results/coolers_library_group/DDX55-clones-NT.hg19.mapq_30.1000.mcool
+/nl/umw_job_dekker/users/av90w/distiller-run/20190924_CTCF_screen_clones_morereads/results/coolers_library_group/DDX55-clones-IAA.hg19.mapq_30.1000.mcool
+/nl/umw_job_dekker/users/av90w/distiller-run/20190924_CTCF_screen_clones_morereads/results/coolers_library_group/TAF5L-clones-NT.hg19.mapq_30.1000.mcool
+/nl/umw_job_dekker/users/av90w/distiller-run/20190924_CTCF_screen_clones_morereads/results/coolers_library_group/TAF5L-clones-IAA.hg19.mapq_30.1000.mcool
+
+# locations of the siRNA DDX55 and TAF5L mcool:
+/nl/umw_job_dekker/users/av90w/distiller-run/20191105_CTCF_screen_siRNA_replicates_withgroups/results/coolers_library_group/siCTRL-NT.hg19.mapq_30.1000.mcool
+/nl/umw_job_dekker/users/av90w/distiller-run/20191105_CTCF_screen_siRNA_replicates_withgroups/results/coolers_library_group/siCTRL-IAA.hg19.mapq_30.1000.mcool
+/nl/umw_job_dekker/users/av90w/distiller-run/20191105_CTCF_screen_siRNA_replicates_withgroups/results/coolers_library_group/siDDX55-NT.hg19.mapq_30.1000.mcool
+/nl/umw_job_dekker/users/av90w/distiller-run/20191105_CTCF_screen_siRNA_replicates_withgroups/results/coolers_library_group/siDDX55-IAA.hg19.mapq_30.1000.mcool
+/nl/umw_job_dekker/users/av90w/distiller-run/20191105_CTCF_screen_siRNA_replicates_withgroups/results/coolers_library_group/siTAF5L-NT.hg19.mapq_30.1000.mcool
+/nl/umw_job_dekker/users/av90w/distiller-run/20191105_CTCF_screen_siRNA_replicates_withgroups/results/coolers_library_group/siTAF5L-IAA.hg19.mapq_30.1000.mcool
+
 #POLII degron (replicates merged)
 /nl/umw_job_dekker/users/av90w/distiller-run/20200417_remap_polIIdegron/results/coolers_library_group/PTB2539-NT.hg19.mapq_30.1000.mcool
 /nl/umw_job_dekker/users/av90w/distiller-run/20200417_remap_polIIdegron/results/coolers_library_group/PTB2539-IAA.hg19.mapq_30.1000.mcool
