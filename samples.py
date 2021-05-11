@@ -23,24 +23,28 @@ samples["ctcf"] = {"fname": "NT-CTCF_R1.mLb.clN.bigWig",
                    "binsize":200,
                    "flank":5_000,
                    "crange":(0,2.2),
+                   "norm":None,
                    "cmap":cmap3,
                   }
 samples["noctcf"] = {"fname":"IAA-CTCF_R1.mLb.clN.bigWig",
                    "binsize":200,
                    "flank":5_000,
                    "crange":(0,2.2),
+                   "norm":None,
                    "cmap":cmap3,
                   }
 samples["rad21_CTCF"] = {"fname":"NT-RAD21_R1.mLb.clN.bigWig",
                    "binsize":200,
                    "flank":5_000,
                    "crange":(0,.4),
+                   "norm":None,
                    "cmap":cmap3,
                   }
 samples["rad21_noCTCF"] = {"fname":"IAA-RAD21_R1.mLb.clN.bigWig",
                    "binsize":200,
                    "flank":5_000,
                    "crange":(0,.4),
+                   "norm":None,
                    "cmap":cmap3,
                   }
 # best G4 track that we found ...
@@ -48,46 +52,127 @@ samples["G4a_r2"] = {"fname":"GSM2876095_B_REP2.SLX-12320.K562_P9_Async_a_701_51
                    "binsize":200,
                    "flank":5_000,
                    "crange":(0,30),
+                   "norm":None,
                    "cmap":cmap3,
                   }
 # add ddx for fun ...
 samples["ddx_CTCF"] = {"fname":"NT-DDX55_R1.mLb.clN.bigWig",
                    "binsize":200,
                    "flank":5_000,
-                   "crange":(0,.4),
+                   "crange":(0,.3),
+                   "norm":None,
                    "cmap":cmap3,
                   }
 samples["ddx_noCTCF"] = {"fname":"IAA-DDX55_R1.mLb.clN.bigWig",
                    "binsize":200,
                    "flank":5_000,
-                   "crange":(0,.4),
+                   "crange":(0,.3),
+                   "norm":None,
                    "cmap":cmap3,
                   }
 # add TAF5L for fun ...
 samples["taf5l_CTCF"] = {"fname":"NT-TAF5L_R1.mLb.clN.bigWig",
                    "binsize":200,
                    "flank":5_000,
-                   "crange":(0,.4),
+                   "crange":(0,.3),
+                   "norm":None,
                    "cmap":cmap3,
                   }
 samples["taf5l_noCTCF"] = {"fname":"IAA-TAF5L_R1.mLb.clN.bigWig",
                    "binsize":200,
                    "flank":5_000,
-                   "crange":(0,.4),
+                   "crange":(0,.3),
+                   "norm":None,
                    "cmap":cmap3,
                   }
+#############################
+# ADD some replicate2-s:
+samples["ddx_CTCF_r2"] = {"fname":"NT-DDX55_R1.mLb.clN.Replicate2.bigWig",
+                   "binsize":200,
+                   "flank":5_000,
+                   "crange":(0,.3),
+                   "norm":None,
+                   "cmap":cmap3,
+                  }
+samples["ddx_noCTCF_r2"] = {"fname":"IAA-DDX55_R1.mLb.clN.Replicate2.bigWig",
+                   "binsize":200,
+                   "flank":5_000,
+                   "crange":(0,.3),
+                   "norm":None,
+                   "cmap":cmap3,
+                  }
+samples["taf5l_CTCF_r2"] = {"fname":"NT-TAF5L_R1.mLb.clN.Replicate2.bigWig",
+                   "binsize":200,
+                   "flank":5_000,
+                   "crange":(0,.3),
+                   "norm":None,
+                   "cmap":cmap3,
+                  }
+samples["taf5l_noCTCF_r2"] = {"fname":"IAA-TAF5L_R1.mLb.clN.Replicate2.bigWig",
+                   "binsize":200,
+                   "flank":5_000,
+                   "crange":(0,.3),
+                   "norm":None,
+                   "cmap":cmap3,
+                  }
+samples["rad21_CTCF_r2"] = {"fname":"NT-RAD21_R2.mLb.clN.Replicate2.bigWig",
+                   "binsize":200,
+                   "flank":5_000,
+                   "crange":(0,.4),
+                   "norm":None,
+                   "cmap":cmap3,
+                  }
+samples["rad21_noCTCF_r2"] = {"fname":"IAA-RAD21_R1.mLb.clN.Replicate2.bigWig",
+                   "binsize":200,
+                   "flank":5_000,
+                   "crange":(0,.4),
+                   "norm":None,
+                   "cmap":cmap3,
+                  }
+samples["input_CTCF_r2"] = {"fname":"NT-input_R2.mLb.clN.Replicate2.bigWig",
+                   "binsize":200,
+                   "flank":5_000,
+                   "crange":(0,.4),
+                   "norm":None,
+                   "cmap":cmap3,
+                  }
+samples["input_noCTCF_r2"] = {"fname":"IAA-input_R1.mLb.clN.Replicate2.bigWig",
+                   "binsize":200,
+                   "flank":5_000,
+                   "crange":(0,.4),
+                   "norm":None,
+                   "cmap":cmap3,
+                  }
+samples["input_CTCF_r3"] = {"fname":"NT-input_R1.mLb.clN.Replicate3.bigWig",
+                   "binsize":200,
+                   "flank":5_000,
+                   "crange":(0,.4),
+                   "norm":None,
+                   "cmap":cmap3,
+                  }
+samples["input_noCTCF_r3"] = {"fname":"IAA-input_R2.mLb.clN.Replicate3.bigWig",
+                   "binsize":200,
+                   "flank":5_000,
+                   "crange":(0,.4),
+                   "norm":None,
+                   "cmap":cmap3,
+                  }
+
+#############################
 # add input-control for fun ...
 # input controls for RAD21 R1, DDX55 R1, TAF5L R1
 samples["input_CTCF"] = {"fname":"NT-input_R1.mLb.clN.bigWig",
                    "binsize":200,
                    "flank":5_000,
                    "crange":(0,.4),
+                   "norm":None,
                    "cmap":cmap3,
                   }
 samples["input_noCTCF"] = {"fname":"IAA-input_R1.mLb.clN.bigWig",
                    "binsize":200,
                    "flank":5_000,
                    "crange":(0,.4),
+                   "norm":None,
                    "cmap":cmap3,
                   }
 # add RNA-PolII
@@ -95,6 +180,7 @@ samples["polII"] = {"fname":"PolIIChipSeq-Hap1.bw",
                    "binsize":200,
                    "flank":5_000,
                    "crange":(0,.7),
+                   "norm":None,
                    "cmap":cmap3,
                   }
 # add H3K4 public
@@ -103,18 +189,21 @@ samples["h3k4_r1"] = {"fname":"HAP1_H3K4me3_WT_K4_1.bw",
                    "binsize":200,
                    "flank":5_000,
                    "crange":(0,10.),
+                   "norm":None,
                    "cmap":cmap3,
                   }
 samples["h3k4_r2"] = {"fname":"HAP1_H3K4me3_WT_K4_2.bw",
                    "binsize":200,
                    "flank":5_000,
                    "crange":(0,10.),
+                   "norm":None,
                    "cmap":cmap3,
                   }
 samples["h3k4_input"] = {"fname":"HAP1_Input_WT_K4-control.bw",
                    "binsize":200,
                    "flank":5_000,
                    "crange":(0,10.),
+                   "norm":None,
                    "cmap":cmap3,
                   }
 
@@ -125,6 +214,7 @@ samples["h3k4_k562"] = {"fname":"K562_ChIP_seqMerge_H3K4me3_v2.bw",
                    "binsize":200,
                    "flank":5_000,
                    "crange":(0,10.),
+                   "norm":None,
                    "cmap":cmap3,
                   }
 
@@ -137,12 +227,14 @@ samples["ins_CTCF"] = {"fname":f"CkoCT442_NT_pool.hg19.{ins_binsize_human}.{ins_
                    "binsize":ins_binsize,
                    "flank":2*ins_diamond,
                    "crange":(-.5,.5),
+                   "norm":None,
                    "cmap":cmap2,
                   }
 samples["ins_noCTCF"] = {"fname":f"CkoCT442_IAA_pool.hg19.{ins_binsize_human}.{ins_diamond_human}.bw",
                    "binsize":ins_binsize,
                    "flank":2*ins_diamond,
                    "crange":(-.5,.5),
+                   "norm":None,
                    "cmap":cmap2,
                   }
 
@@ -153,12 +245,14 @@ samples["ev1_CTCF"] = {"fname": f"CkoCT442_NT_pool.hg19.EV.{ev_binsize_human}.bw
                    "binsize":ev_binsize,
                    "flank":5*ev_binsize,
                    "crange":(-1.,1.),
+                   "norm":None,
                    "cmap":cmap1,
                   }
 samples["ev1_noCTCF"] = {"fname": f"CkoCT442_IAA_pool.hg19.EV.{ev_binsize_human}.bw",
                    "binsize":ev_binsize,
                    "flank":5*ev_binsize,
                    "crange":(-1.,1.),
+                   "norm":None,
                    "cmap":cmap1,
                   }
 
@@ -166,12 +260,14 @@ samples["ev1_noCTCF"] = {"fname": f"CkoCT442_IAA_pool.hg19.EV.{ev_binsize_human}
 samples["mrna_ctcf"] = {"fname": "S442_NT.bw",
                    "binsize":200,
                    "flank":5000,
-                   "crange":(.0,2000.),
+                   "crange":(None,None),
+                   "norm":matplotlib.colors.LogNorm(vmin=1.,vmax=20.),
                    "cmap":cmap3,
                   }
 samples["mrna_noctcf"] = {"fname": "S442_IAA.bw",
                    "binsize":200,
                    "flank":5000,
-                   "crange":(.0,2000.),
+                   "crange":(None,None),
+                   "norm":matplotlib.colors.LogNorm(vmin=1.,vmax=20.),
                    "cmap":cmap3,
                   }
