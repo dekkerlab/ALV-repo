@@ -128,9 +128,9 @@ TAF5L peaks
 /nl/umw_job_dekker/users/av90w/RNAseq/data/siRNA/report2546/bigwig_star/S442_NT.bw
 
 #RSEM for siRNA (and 44 and 442)
-/nl/umw_job_dekker/users/av90w/RNAseq/data/siRNA/report2546/rsem/mergedRSEM
+/nl/umw_job_dekker/users/av90w/RNAseq/data/siRNA/report2546/rsem/mergedRSEM/merged_TPM_genes.tsv
 #RSEM for clones (and 44 and 442)
-/nl/umw_job_dekker/users/av90w/RNAseq/data/siRNA/report2547/rsem/mergedRSEM
+/nl/umw_job_dekker/users/av90w/RNAseq/data/siRNA/report2547/rsem/mergedRSEM/merged_TPM_genes.tsv
 
 ## to do heatmap style to represent the DEAD box helicases in the screen
 
