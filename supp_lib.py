@@ -508,10 +508,11 @@ def plot_stackups_sets(
             ax_stackup[idx][_i].set_yticks([])
             ax_stackup[idx][_i].set_yticklabels([])
         # bottom one - show ticks for now ...
-        ax_stackup[idx][_i+1].set_xticks(flank_ticks)
-        ax_stackup[idx][_i+1].set_xticklabels(flank_ticklabels)
-        ax_stackup[idx][_i+1].set_yticks([])
-        ax_stackup[idx][_i+1].set_yticklabels([])
+        _i = num_stackup_groups-1
+        ax_stackup[idx][_i].set_xticks(flank_ticks)
+        ax_stackup[idx][_i].set_xticklabels(flank_ticklabels)
+        ax_stackup[idx][_i].set_yticks([])
+        ax_stackup[idx][_i].set_yticklabels([])
         plt.colorbar(stack_hm,cax=ax_cbar[idx],orientation="horizontal")
         
     return ax_xtra
