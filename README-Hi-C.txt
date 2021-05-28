@@ -120,6 +120,13 @@ CkoCT442-IAA-PDS-R2-T1__hg19.hg19.mapq_30.1000.mcool
 NT-PDS.hg19.mapq_30.1000.mcool
 IAA-PDS.hg19.mapq_30.1000.mcool
 
+## PlaB (splicing inhibition) two replicates pooled together
+/nl/umw_job_dekker/users/av90w/cooler/20210525_PlaB_same
+NT-hg19-combined-90000000.mcool
+IAA-hg19-combined-90000000.mcool
+NT-PlaB-hg19-combined-90000000.mcool
+IAA-PlaB-hg19-combined-90000000.mcool
+
 ## compartment files
 
 # CTCF degron non treated
