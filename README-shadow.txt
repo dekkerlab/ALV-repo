@@ -46,16 +46,3 @@
 /data/alv/CTCF_degron/data/WT-44-442-pool/CkoC44-NO-TIR1-pool.mcool
 /data/alv/CTCF_degron/data/WT-44-442-pool/CkoCT442-NT-pool-500000000.mcool
 /data/alv/CTCF_degron/data/WT-44-442-pool/CkoCT442-IAA-pool-500000000.mcool
-
-
-
-
-
-
-
-
-
-
-
-
-
