@@ -16,6 +16,7 @@
 *.tar
 *.wig
 *.svg
+*.bedGraph
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

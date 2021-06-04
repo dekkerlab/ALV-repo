@@ -251,8 +251,8 @@ samples["h3k4_k562"] = {"fname":"K562_ChIP_seqMerge_H3K4me3_v2.bw",
                    "cmap":cmap3,
                   }
 
-ins_binsize = 2_000
-ins_diamond = 20_000
+ins_binsize = 5_000
+ins_diamond = 100_000
 ins_binsize_human = f"{int(ins_binsize/1000)}kb"
 ins_diamond_human = f"{int(ins_diamond/1000)}kb"
 # deeper versions - combined for nice insulation stackups (todo - make sure CTCF and noCTCF - are at comparable depth)...
@@ -381,6 +381,69 @@ samples["ins_siTAF_CTCF"] = {"fname":f"siTAF5L-NT.hg19.{ins_binsize_human}.{ins_
                    "cmap":cmap2,
                   }
 samples["ins_siTAF_noCTCF"] = {"fname":f"siTAF5L-IAA.hg19.{ins_binsize_human}.{ins_diamond_human}.bw",
+                   "binsize":ins_binsize,
+                   "flank":2*ins_diamond,
+                   "crange":(-.5,.5),
+                   "norm":None,
+                   "cmap":cmap2,
+                  }
+
+
+
+# insulation for PlaB splicing inhibitor ...
+samples["ins_CtrPlaB_CTCF"] = {"fname":f"CtrlPlaB-NT.hg19.{ins_binsize_human}.{ins_diamond_human}.bw",
+                   "binsize":ins_binsize,
+                   "flank":2*ins_diamond,
+                   "crange":(-.5,.5),
+                   "norm":None,
+                   "cmap":cmap2,
+                  }
+samples["ins_CtrPlaB_noCTCF"] = {"fname":f"CtrlPlaB-IAA.hg19.{ins_binsize_human}.{ins_diamond_human}.bw",
+                   "binsize":ins_binsize,
+                   "flank":2*ins_diamond,
+                   "crange":(-.5,.5),
+                   "norm":None,
+                   "cmap":cmap2,
+                  }
+samples["ins_PlaB_CTCF"] = {"fname":f"PlaB-NT.hg19.{ins_binsize_human}.{ins_diamond_human}.bw",
+                   "binsize":ins_binsize,
+                   "flank":2*ins_diamond,
+                   "crange":(-.5,.5),
+                   "norm":None,
+                   "cmap":cmap2,
+                  }
+samples["ins_PlaB_noCTCF"] = {"fname":f"PlaB-IAA.hg19.{ins_binsize_human}.{ins_diamond_human}.bw",
+                   "binsize":ins_binsize,
+                   "flank":2*ins_diamond,
+                   "crange":(-.5,.5),
+                   "norm":None,
+                   "cmap":cmap2,
+                  }
+
+
+# Controls ... for CTCF-degron - downsampled together to be comparable ...
+samples["ins_noTIR1_500M"] = {"fname":f"Ctrl500M-noTIR1.hg19.{ins_binsize_human}.{ins_diamond_human}.bw",
+                   "binsize":ins_binsize,
+                   "flank":2*ins_diamond,
+                   "crange":(-.5,.5),
+                   "norm":None,
+                   "cmap":cmap2,
+                  }
+samples["ins_WT_500M"] = {"fname":f"Ctrl500M-wtHAP1.hg19.{ins_binsize_human}.{ins_diamond_human}.bw",
+                   "binsize":ins_binsize,
+                   "flank":2*ins_diamond,
+                   "crange":(-.5,.5),
+                   "norm":None,
+                   "cmap":cmap2,
+                  }
+samples["ins_CTCF_500M"] = {"fname":f"Ctrl500M-CT442-NT.hg19.{ins_binsize_human}.{ins_diamond_human}.bw",
+                   "binsize":ins_binsize,
+                   "flank":2*ins_diamond,
+                   "crange":(-.5,.5),
+                   "norm":None,
+                   "cmap":cmap2,
+                  }
+samples["ins_noCTCF_500M"] = {"fname":f"Ctrl500M-CT442-IAA.hg19.{ins_binsize_human}.{ins_diamond_human}.bw",
                    "binsize":ins_binsize,
                    "flank":2*ins_diamond,
                    "crange":(-.5,.5),
@@ -526,6 +589,35 @@ samples["ev1_siTAF_noCTCF"] = {"fname":f"siTAF5L-IAA.hg19.EV.{ev_binsize_human}.
                    "cmap":cmap1,
                   }
 
+# EV1 for PlaB splicing inhibitor ...
+samples["ev1_CtrPlaB_CTCF"] = {"fname":f"CtrlPlaB-NT.hg19.EV.{ev_binsize_human}.cis.bw",
+                   "binsize":ev_binsize,
+                   "flank":6*ev_binsize,
+                   "crange":(-1.,1.),
+                   "norm":None,
+                   "cmap":cmap1,
+                  }
+samples["ev1_CtrPlaB_noCTCF"] = {"fname":f"CtrlPlaB-IAA.hg19.EV.{ev_binsize_human}.cis.bw",
+                   "binsize":ev_binsize,
+                   "flank":6*ev_binsize,
+                   "crange":(-1,1),
+                   "norm":None,
+                   "cmap":cmap1,
+                  }
+samples["ev1_PlaB_CTCF"] = {"fname":f"PlaB-NT.hg19.EV.{ev_binsize_human}.cis.bw",
+                   "binsize":ev_binsize,
+                   "flank":6*ev_binsize,
+                   "crange":(-1.,1.),
+                   "norm":None,
+                   "cmap":cmap1,
+                  }
+samples["ev1_PlaB_noCTCF"] = {"fname":f"PlaB-IAA.hg19.EV.{ev_binsize_human}.cis.bw",
+                   "binsize":ev_binsize,
+                   "flank":6*ev_binsize,
+                   "crange":(-1,1),
+                   "norm":None,
+                   "cmap":cmap1,
+                  }
 
 
 # rna-seq ...
