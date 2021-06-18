@@ -240,6 +240,72 @@ samples["h3k4_input"] = {"fname":"HAP1_Input_WT_K4-control.bw",
                    "cmap":cmap3,
                   }
 
+
+# add H3K27ac public
+# GSM2828241_HAP1_ChIP-seq_H3K27ac_WT_1.bigWig GSM2828242_HAP1_ChIP-seq_H3K27ac_WT_2.bigWig GSM2828243_HAP1_ChIP-seq_IgG_1.bigWig
+samples["h3k27ac_r1"] = {"fname":"GSM2828241_HAP1_ChIP-seq_H3K27ac_WT_1.bigWig",
+                   "binsize":200,
+                   "flank":5_000,
+                   "crange":(0,.1),
+                   "norm":None,
+                   "cmap":cmap3,
+                  }
+samples["h3k27ac_input"] = {"fname":"GSM2828243_HAP1_ChIP-seq_IgG_1.bigWig",
+                   "binsize":200,
+                   "flank":5_000,
+                   "crange":(0,.1),
+                   "norm":None,
+                   "cmap":cmap3,
+                  }
+
+
+# add public H3K27ac for HCT - for comparisons with Rao 2017 ...
+samples["h3k27ac_HCTfold"] = {"fname":"HCT-H3K27ac_foldchange.bigWig",
+                   "binsize":200,
+                   "flank":5_000,
+                   "crange":(0,5),
+                   "norm":None,
+                   "cmap":cmap3,
+                  }
+samples["h3k27ac_HCTpval"] = {"fname":"HCT-H3k27ac-signalPval.bigWig",
+                   "binsize":200,
+                   "flank":5_000,
+                   "crange":(0,1),
+                   "norm":None,
+                   "cmap":cmap3,
+                  }
+
+
+
+# add DNAse-seq public
+samples["dnase-hap1"] = {"fname":"HAP1-DNAse.bigWig",
+                   "binsize":200,
+                   "flank":5_000,
+                   "crange":(0,1),
+                   "norm":None,
+                   "cmap":cmap3,
+                  }
+
+
+# add DNAse-seq public
+samples["dnase-HCT-r1"] = {"fname":"DNase-seq-HCT-r1.bigWig",
+                   "binsize":200,
+                   "flank":5_000,
+                   "crange":(0,1.3),
+                   "norm":None,
+                   "cmap":cmap3,
+                  }
+samples["dnase-HCT-r2"] = {"fname":"DNase-seq-HCT-r2.bigWig",
+                   "binsize":200,
+                   "flank":5_000,
+                   "crange":(0,1.3),
+                   "norm":None,
+                   "cmap":cmap3,
+                  }
+
+
+
+
 # K562 data to compare with the G4 as well ...
 # K562_ChIP_seqMerge_H3K4me3_v2
 # K562_ChIP_exoMerge_H3K4me3.bw

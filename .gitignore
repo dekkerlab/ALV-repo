@@ -17,6 +17,13 @@
 *.wig
 *.svg
 *.bedGraph
+*.zip
+*-narrowPeak*
+*.cis.lam.txt
+*.cis.vecs.txt
+alldetected_*
+intersect-*
+*.pickle
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
