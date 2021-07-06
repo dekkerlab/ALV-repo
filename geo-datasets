@@ -1,0 +1,39 @@
+## GEO for downloaded datasets
+#G4-seq
+https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE63874
+GSE63874_Na_K_PDS_minus_hits_intersect.bed.gz
+GSE63874_Na_K_PDS_plus_hits_intersect.bed.gz
+
+#K562 G4 ChIP-seq
+https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE107690
+
+#HAP1 RNA polII ChIP-seq
+https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE72800
+GSM1872287_Hg19ChipHisCyc50Hap1WtCTDR1.bw
+
+#K562 H3K4me3 ChIP-seq
+https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE108323
+GSE108323_ChIP_seqMerge_H3K4me3_v2.bw
+
+#HAP1 H3K4me3 ChIP-seq
+https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE110133
+GSM2978165_WT_K4_1.bw
+
+#K562 R-loops
+https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE70189
+GSM1720619_K562_DRIP.wig.gz (--> was converted to bigwig)
+and create files with overlap between NT2 and K562 peaks.
+
+#RAD21 degron Hi-C
+https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE104334
+
+#RAD21 degron ChIP-seq
+https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSE104888
+GSM2809609_Rao-2017-CHIP001-RAD21-untreated.bw
+GSM2809610_Rao-2017-CHIP002-RAD21-treated.bw
+
+#HAP1 H3K27ac
+https://www.encodeproject.org/experiments/ENCSR131DVD/ --> was lifted to hg19. List of peaks.
+
+#HAP1 DNAse
+https://www.encodeproject.org/experiments/ENCSR620QNS/
