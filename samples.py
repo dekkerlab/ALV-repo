@@ -212,7 +212,7 @@ samples["input_noCTCF"] = {"fname":"IAA-input_R1.mLb.clN.bigWig",
 samples["polII"] = {"fname":"PolIIChipSeq-Hap1.bw",
                    "binsize":200,
                    "flank":5_000,
-                   "crange":(0,.7),
+                   "crange":(0,.9),
                    "norm":None,
                    "cmap":cmap3,
                   }
@@ -221,14 +221,14 @@ samples["polII"] = {"fname":"PolIIChipSeq-Hap1.bw",
 samples["h3k4_r1"] = {"fname":"HAP1_H3K4me3_WT_K4_1.bw",
                    "binsize":200,
                    "flank":5_000,
-                   "crange":(0,31.),
+                   "crange":(0,33.),
                    "norm":None,
                    "cmap":cmap3,
                   }
 samples["h3k4_r2"] = {"fname":"HAP1_H3K4me3_WT_K4_2.bw",
                    "binsize":200,
                    "flank":5_000,
-                   "crange":(0,31.),
+                   "crange":(0,33.),
                    "norm":None,
                    "cmap":cmap3,
                   }
@@ -239,6 +239,33 @@ samples["h3k4_input"] = {"fname":"HAP1_Input_WT_K4-control.bw",
                    "norm":None,
                    "cmap":cmap3,
                   }
+
+# some default h3k4me3 Chip-Seq bigWigs from ENCODE:
+# https://www.encodeproject.org/search/?type=Experiment&control_type!=*&status=released&perturbed=false&target.label=H3K4me3&biosample_ontology.term_name=HCT116
+# https://www.encodeproject.org/files/ENCFF176NSX/@@download/ENCFF176NSX.bigWig
+samples["h3k4_hct"] = {"fname":"HCT116_H3K4_2014.bigWig",
+                   "binsize":200,
+                   "flank":5_000,
+                   "crange":(0,220.),
+                   "norm":None,
+                   "cmap":cmap3,
+                  }
+# ...
+samples["ctcf_hct_nt1"] = {"fname":"GSM2809613_Rao-2017-CHIP005-CTCF-untreated.bw",
+                   "binsize":200,
+                   "flank":5_000,
+                   "crange":(0,10.),
+                   "norm":None,
+                   "cmap":cmap3,
+                  }
+samples["ctcf_hct_nt2"] = {"fname":"GSM2809615_Rao-2017-CHIP007-CTCF-untreated.bw",
+                   "binsize":200,
+                   "flank":5_000,
+                   "crange":(0,10.),
+                   "norm":None,
+                   "cmap":cmap3,
+                  }
+
 
 
 # add H3K27ac public
@@ -312,7 +339,7 @@ samples["dnase-HCT-r2"] = {"fname":"DNase-seq-HCT-r2.bigWig",
 samples["h3k4_k562"] = {"fname":"K562_ChIP_seqMerge_H3K4me3_v2.bw",
                    "binsize":200,
                    "flank":5_000,
-                   "crange":(0,10.),
+                   "crange":(0,190.),
                    "norm":None,
                    "cmap":cmap3,
                   }
@@ -690,14 +717,14 @@ samples["ev1_PlaB_noCTCF"] = {"fname":f"PlaB-IAA.hg19.EV.{ev_binsize_human}.cis.
 samples["mrna_ctcf"] = {"fname": "S442_NT.bw",
                    "binsize":200,
                    "flank":5000,
-                   "crange":(None,None),
+                   "crange":(2.,22.),
                    "norm":matplotlib.colors.LogNorm(vmin=1.,vmax=20.),
                    "cmap":cmap3,
                   }
 samples["mrna_noctcf"] = {"fname": "S442_IAA.bw",
                    "binsize":200,
                    "flank":5000,
-                   "crange":(None,None),
+                   "crange":(2.,22.),
                    "norm":matplotlib.colors.LogNorm(vmin=1.,vmax=20.),
                    "cmap":cmap3,
                   }

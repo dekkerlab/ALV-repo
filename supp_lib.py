@@ -408,22 +408,31 @@ def plot_stackups_sets(
     num_rows = num_stackups + len(extra_plots)
     # let's figure out - how tall is this stackup
     # get heights of stackups from each groups
-    stackup_group_heights = [len(hmss[k][0]) for k in hmss]
+    stackup_group_heights = [ len(hmss[k][0]) for k in hmss ]
     stackup_height = sum(stackup_group_heights)*12/10_000
-    figure_height = stackup_height + 2.5
+    service_height = 3.5
+    width_per_col = 3.7
+    figure_height = stackup_height + service_height
     fig = plt.figure(
-        figsize=(3.5*num_rows, figure_height),
+        figsize=(width_per_col*num_rows, figure_height + 2*.8 + 2*.8),
         facecolor="white",
-        constrained_layout=True
+        tight_layout=False,
+        constrained_layout=False,
     )
     gs = fig.add_gridspec(
         num_stackup_groups+2,
         num_rows,
         width_ratios=[1]*num_rows,
         height_ratios = \
-            [0.95*2.5/figure_height] + \
-            [(_h/sum(stackup_group_heights))*(figure_height-2.5)/figure_height for _h in stackup_group_heights] + \
-            [0.05*2.5/figure_height]
+            [0.95*service_height/figure_height] + \
+            [(_h/sum(stackup_group_heights))*(figure_height-service_height)/figure_height for _h in stackup_group_heights] + \
+            [0.05*service_height/figure_height],
+        left=0,
+        right=1,
+        top=1 - .8/(figure_height + 2*.8 + 2*0.8),
+        bottom=.8/(figure_height + 2*.8 + 2*0.8),
+        hspace=((len(stackup_group_heights)+2)/figure_height)*.8,
+        wspace=0.07,
     )
 
     ax_profile = {}
@@ -443,6 +452,18 @@ def plot_stackups_sets(
     for idx in extra_order:
         ax_xtra[idx] = [fig.add_subplot(gs[_i+1,idx]) for _i in range(num_stackup_groups)] # stackup groups ...
 
+    # turning some of the input parameters into "oredered" or labeled dicts ...
+    if norms is None:
+        norms = { _i:None for _i in hmss_order}
+    else:
+        norms = { _i:norms[i] for i,_i in enumerate(hmss_order)}
+    vlims = { _i:limss[i] for i,_i in enumerate(hmss_order)}
+    titles = { _i:titles[i] for i,_i in enumerate(hmss_order)}
+    if binsizes is None:
+        binsizes = { _i:1 for _i in hmss_order}
+    else:
+        binsizes = { _i:binsizes[i] for i,_i in enumerate(hmss_order)}
+
     hm_arr = {}
     profile_hm = {}
     # for each group of stackups (vertically set)
@@ -458,24 +479,15 @@ def plot_stackups_sets(
                 hm_arr[group_id][idx] = np.where(missing, mu, X)
             else:
                 hm_arr[group_id][idx] = hm[:]
-            profile_hm[group_id][idx] = np.nanmean(hm_arr[group_id][idx],axis=0)
-    
-    # turning some of the input parameters into "oredered" or labeled dicts ...
-    if norms is None:
-        norms = { _i:None for _i in hmss_order}
-    else:
-        norms = { _i:norms[i] for i,_i in enumerate(hmss_order)}
-    vlims = { _i:limss[i] for i,_i in enumerate(hmss_order)}
-    titles = { _i:titles[i] for i,_i in enumerate(hmss_order)}
-    if binsizes is None:
-        binsizes = { _i:1 for _i in hmss_order}
-    else:
-        binsizes = { _i:binsizes[i] for i,_i in enumerate(hmss_order)}
+            if norms[idx] is None:
+                profile_hm[group_id][idx] = np.nanmean(hm_arr[group_id][idx],axis=0)
+            else:
+                profile_hm[group_id][idx] = np.exp(np.nanmean(np.log(hm_arr[group_id][idx]),axis=0))
 
     for idx, cmap in zip(hmss_order, cmps):
         # plot profiles from every group on a single common axis for profiles...
         for _i in range(num_stackup_groups):
-            ax_profile[idx].plot(profile_hm[_i][idx])
+            ax_profile[idx].plot(profile_hm[_i][idx],linewidth=4)
         ax_profile[idx].set_yscale("linear" if norms[idx] is None else "log")
         # stackups for every group ...
         for _i in range(num_stackup_groups):
@@ -483,8 +495,8 @@ def plot_stackups_sets(
                               hm_arr[_i][idx],
                               norm=norms[idx],
                               aspect="auto",
-                              vmin=vlims[idx][0],
-                              vmax=vlims[idx][1],
+                              vmin=vlims[idx][0] if norms[idx] is None else None,
+                              vmax=vlims[idx][1] if norms[idx] is None else None,
                               cmap=cmap,
                               interpolation=interpolation,
             )
@@ -496,12 +508,29 @@ def plot_stackups_sets(
         ax_profile[idx].set_xlim([first_bin, last_bin])
         ax_profile[idx].set_ylim(vlims[idx])
         ax_profile[idx].set_title(titles[idx])
+        ax_profile[idx].tick_params(axis="y", length=0, direction="in", pad=-5)
+        ax_profile[idx].tick_params(axis="x", length=6)
+        ax_profile[idx].set_yticks(vlims[idx])
+        ax_profile[idx].set_yticklabels(vlims[idx],fontsize=50)
+        for _tidx, tick in enumerate(ax_profile[idx].yaxis.get_majorticklabels()):
+            tick.set_horizontalalignment("left")
+            if _tidx == 0:
+                tick.set_verticalalignment("bottom")
+            elif _tidx == 1:
+                tick.set_verticalalignment("top")
         # human readable kb stuff:
         flank_in_kb = int((center_bin+.5)*binsizes[idx]/1000)
         flank_ticks = [first_bin, center_bin, last_bin]
-        flank_ticklabels = [-flank_in_kb, 0, flank_in_kb]
+        flank_ticklabels = [-flank_in_kb, "", flank_in_kb]
         ax_profile[idx].set_xticks(flank_ticks)
-        ax_profile[idx].set_xticklabels(flank_ticklabels)
+        ax_profile[idx].set_xticklabels(flank_ticklabels,fontsize=50)
+        for _tidx, tick in enumerate(ax_profile[idx].xaxis.get_majorticklabels()):
+            if _tidx == 0:
+                tick.set_horizontalalignment("left")
+            elif _tidx == 2:
+                tick.set_horizontalalignment("right")
+            else:
+                tick.set_horizontalalignment("center")
         for _i in range(num_stackup_groups-1):
             ax_stackup[idx][_i].set_xticks([])
             ax_stackup[idx][_i].set_xticklabels([])
@@ -510,11 +539,29 @@ def plot_stackups_sets(
         # bottom one - show ticks for now ...
         _i = num_stackup_groups-1
         ax_stackup[idx][_i].set_xticks(flank_ticks)
-        ax_stackup[idx][_i].set_xticklabels(flank_ticklabels)
+        ax_stackup[idx][_i].set_xticklabels(flank_ticklabels,fontsize=50)
+        ax_stackup[idx][_i].tick_params(axis="x", length=6)        
         ax_stackup[idx][_i].set_yticks([])
         ax_stackup[idx][_i].set_yticklabels([])
-        plt.colorbar(stack_hm,cax=ax_cbar[idx],orientation="horizontal")
-        
+        for _tidx, tick in enumerate(ax_stackup[idx][_i].xaxis.get_majorticklabels()):
+            if _tidx == 0:
+                tick.set_horizontalalignment("left")
+            elif _tidx == 2:
+                tick.set_horizontalalignment("right")
+            else:
+                tick.set_horizontalalignment("center")
+        plt.colorbar(stack_hm,
+                    cax=ax_cbar[idx],
+                    orientation="horizontal",
+                    ticks=vlims[idx])
+        ax_cbar[idx].tick_params(axis="x", length=6)
+        ax_cbar[idx].set_xticklabels(vlims[idx],fontsize=50)
+        for _tidx, tick in enumerate(ax_cbar[idx].xaxis.get_majorticklabels()):
+            if _tidx == 0:
+                tick.set_horizontalalignment("left")
+            elif _tidx == 1:
+                tick.set_horizontalalignment("right")
+
     return ax_xtra
 
 def get_4cstackup(clr, features_df, binsize=None, flank=5000, fill_missing=np.nan, ignore_diags=2):
