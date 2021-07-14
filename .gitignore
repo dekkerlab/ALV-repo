@@ -25,6 +25,7 @@ alldetected_*
 intersect-*
 *.pickle
 *.bed.gz
+nohup.out
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
