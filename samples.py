@@ -16,6 +16,8 @@ autosomal_chroms = ['chr1','chr2','chr3','chr4','chr5','chr6','chr7','chr8','chr
  'chr10','chr11','chr12','chr13','chr14','chr15','chr16','chr17',
  'chr18','chr19','chr20','chr21','chr22']
 
+
+
 # describe samples ....
 samples = {}
 # each sample would have several attributres related to stackups ... - fname, binsize, flank, datarange, colormap
@@ -69,6 +71,96 @@ samples["rad21_norad21"] = {"fname":"GSM2809610_Rao-2017-CHIP002-RAD21-treated.b
                    "norm":None,
                    "cmap":cmap3,
                   }
+
+
+# some new libraries ...
+samples["newctcf"] = {"fname": "NT-CTCF_R1.mLb.clN.bigWig",
+                   "binsize":200,
+                   "flank":5_000,
+                   "crange":(0,3.2),
+                   "norm":None,
+                   "cmap":cmap3,
+                  }
+samples["newnoctcf"] = {"fname":"IAA-CTCF_R1.mLb.clN.bigWig",
+                   "binsize":200,
+                   "flank":5_000,
+                   "crange":(0,3.2),
+                   "norm":None,
+                   "cmap":cmap3,
+                  }
+samples["newddx_CTCF"] = {"fname":"NT-DDX55_R1.mLb.clN.bigWig",
+                   "binsize":200,
+                   "flank":5_000,
+                   "crange":(0,.52),
+                   "norm":None,
+                   "cmap":cmap3,
+                  }
+samples["newddx_noCTCF"] = {"fname":"IAA-DDX55_R1.mLb.clN.bigWig",
+                   "binsize":200,
+                   "flank":5_000,
+                   "crange":(0,.52),
+                   "norm":None,
+                   "cmap":cmap3,
+                  }
+samples["newtaf5l_CTCF"] = {"fname":"NT-TAF5L_R1.mLb.clN.bigWig",
+                   "binsize":200,
+                   "flank":5_000,
+                   "crange":(0,.51),
+                   "norm":None,
+                   "cmap":cmap3,
+                  }
+samples["newtaf5l_noCTCF"] = {"fname":"IAA-TAF5L_R1.mLb.clN.bigWig",
+                   "binsize":200,
+                   "flank":5_000,
+                   "crange":(0,.51),
+                   "norm":None,
+                   "cmap":cmap3,
+                  }
+samples["newrad21_CTCF"] = {"fname":"NT-RAD21_R1.mLb.clN.bigWig",
+                   "binsize":200,
+                   "flank":5_000,
+                   "crange":(0,.51),
+                   "norm":None,
+                   "cmap":cmap3,
+                  }
+samples["newrad21_noCTCF"] = {"fname":"IAA-RAD21_R1.mLb.clN.bigWig",
+                   "binsize":200,
+                   "flank":5_000,
+                   "crange":(0,.51),
+                   "norm":None,
+                   "cmap":cmap3,
+                  }
+# brand new RAD21 ChIP in the context of PolII-AID
+samples["newrad21_PolII"] = {"fname":"NT-RAD21-PTB_R1.mLb.clN.bigWig",
+                   "binsize":200,
+                   "flank":5_000,
+                   "crange":(0,.51),
+                   "norm":None,
+                   "cmap":cmap3,
+                  }
+samples["newrad21_noPolII"] = {"fname":"IAA-RAD21-PTB_R1.mLb.clN.bigWig",
+                   "binsize":200,
+                   "flank":5_000,
+                   "crange":(0,.51),
+                   "norm":None,
+                   "cmap":cmap3,
+                  }
+# branch new PolII ChIP in the context of CTCF-AID
+samples["newpolII_CTCF"] = {"fname":"NT-RPB1_R1.mLb.clN.bigWig",
+                   "binsize":200,
+                   "flank":5_000,
+                   "crange":(0,.9),
+                   "norm":None,
+                   "cmap":cmap3,
+                  }
+samples["newpolII_noCTCF"] = {"fname":"IAA-RPB1_R1.mLb.clN.bigWig",
+                   "binsize":200,
+                   "flank":5_000,
+                   "crange":(0,.9),
+                   "norm":None,
+                   "cmap":cmap3,
+                  }
+
 
 #
 #
@@ -208,6 +300,35 @@ samples["input_noCTCF"] = {"fname":"IAA-input_R1.mLb.clN.bigWig",
                    "norm":None,
                    "cmap":cmap3,
                   }
+samples["newinput_CTCF"] = {"fname":"NT-input_R1.mLb.clN.bigWig",
+                   "binsize":200,
+                   "flank":5_000,
+                   "crange":(0,.4),
+                   "norm":None,
+                   "cmap":cmap3,
+                  }
+samples["newinput_noCTCF"] = {"fname":"IAA-input_R1.mLb.clN.bigWig",
+                   "binsize":200,
+                   "flank":5_000,
+                   "crange":(0,.4),
+                   "norm":None,
+                   "cmap":cmap3,
+                  }
+samples["newinput_PolII"] = {"fname":"NT-input-PTB_R1.mLb.clN.bigWig",
+                   "binsize":200,
+                   "flank":5_000,
+                   "crange":(0,.4),
+                   "norm":None,
+                   "cmap":cmap3,
+                  }
+samples["newinput_noPolII"] = {"fname":"IAA-input-PTB_R1.mLb.clN.bigWig",
+                   "binsize":200,
+                   "flank":5_000,
+                   "crange":(0,.4),
+                   "norm":None,
+                   "cmap":cmap3,
+                  }
+
 # add RNA-PolII
 samples["polII"] = {"fname":"PolIIChipSeq-Hap1.bw",
                    "binsize":200,
@@ -393,6 +514,30 @@ samples["ins_norad21"] = {"fname":f"RAD21-IAA.hg19.{ins_binsize_human}.{ins_diam
                    "norm":None,
                    "cmap":cmap2,
                   }
+
+# insulation in WAPL KO system ...
+samples["ins_waplKO1"] = {"fname":f"WAPL-KO1.hg19.{ins_binsize_human}.{ins_diamond_human}.bw",
+                   "binsize":ins_binsize,
+                   "flank":2*ins_diamond,
+                   "crange":(-.5,.5),
+                   "norm":None,
+                   "cmap":cmap2,
+                  }
+samples["ins_waplKO3"] = {"fname":f"WAPL-KO3.hg19.{ins_binsize_human}.{ins_diamond_human}.bw",
+                   "binsize":ins_binsize,
+                   "flank":2*ins_diamond,
+                   "crange":(-.5,.5),
+                   "norm":None,
+                   "cmap":cmap2,
+                  }
+samples["ins_waplWT"] = {"fname":f"WAPL-WT.hg19.{ins_binsize_human}.{ins_diamond_human}.bw",
+                   "binsize":ins_binsize,
+                   "flank":2*ins_diamond,
+                   "crange":(-.5,.5),
+                   "norm":None,
+                   "cmap":cmap2,
+                  }
+
 
 # insulation for mutants ...
 samples["ins_mutCtr_CTCF"] = {"fname":f"mutControl-NT.hg19.{ins_binsize_human}.{ins_diamond_human}.bw",
