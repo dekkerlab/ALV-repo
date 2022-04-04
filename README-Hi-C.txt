@@ -127,6 +127,19 @@ IAA-hg19-combined-90000000.mcool
 NT-PlaB-hg19-combined-90000000.mcool
 IAA-PlaB-hg19-combined-90000000.mcool
 
+## RAD21-degron on HCT Rao et al 2017
+/nl/umw_job_dekker/users/av90w/distiller-run/20210505_Rao_2017/results/coolers_library_group
+RAD21-AID-IAA-6H.hg19.mapq_30.1000.mcool
+RAD21-AID-NT.hg19.mapq_30.1000.mcool
+
+
+## WAPL Haarthuis et al
+/nl/umw_job_dekker/users/av90w/distiller-run/20211104_Haarthuis_WAPL/results/coolers_library
+Haarthuis-HAP1-WT.hg19.mapq_30.1000.mcool
+Haarthuis-WAPL-KO1.14.hg19.mapq_30.1000.mcool
+Haarthuis-WAPL-KO3.3.hg19.mapq_30.1000.mcool
+
+
 ## compartment files
 
 # CTCF degron non treated

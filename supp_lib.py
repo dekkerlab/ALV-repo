@@ -391,7 +391,9 @@ def plot_stackups_sets(
                   extra_order = None,
                   hmss_order = None,
                   fillmissing=False,
-                  interpolation="nearest"
+                  interpolation="nearest",
+                  inch_per_1k_stack= 1.2, #inches per 1000 elements stackup ...
+                  fig_fontsize = 50,
                  ):
     """
     plot a buch of stackups ...
@@ -409,7 +411,7 @@ def plot_stackups_sets(
     # let's figure out - how tall is this stackup
     # get heights of stackups from each groups
     stackup_group_heights = [ len(hmss[k][0]) for k in hmss ]
-    stackup_height = sum(stackup_group_heights)*12/10_000
+    stackup_height = sum(stackup_group_heights) * inch_per_1k_stack / 1_000
     service_height = 3.5
     width_per_col = 3.7
     figure_height = stackup_height + service_height
@@ -511,7 +513,7 @@ def plot_stackups_sets(
         ax_profile[idx].tick_params(axis="y", length=0, direction="in", pad=-5)
         ax_profile[idx].tick_params(axis="x", length=6)
         ax_profile[idx].set_yticks(vlims[idx])
-        ax_profile[idx].set_yticklabels(vlims[idx],fontsize=50)
+        ax_profile[idx].set_yticklabels(vlims[idx],fontsize=fig_fontsize)
         for _tidx, tick in enumerate(ax_profile[idx].yaxis.get_majorticklabels()):
             tick.set_horizontalalignment("left")
             if _tidx == 0:
@@ -523,7 +525,7 @@ def plot_stackups_sets(
         flank_ticks = [first_bin, center_bin, last_bin]
         flank_ticklabels = [-flank_in_kb, "", flank_in_kb]
         ax_profile[idx].set_xticks(flank_ticks)
-        ax_profile[idx].set_xticklabels(flank_ticklabels,fontsize=50)
+        ax_profile[idx].set_xticklabels(flank_ticklabels,fontsize=fig_fontsize)
         for _tidx, tick in enumerate(ax_profile[idx].xaxis.get_majorticklabels()):
             if _tidx == 0:
                 tick.set_horizontalalignment("left")
@@ -539,7 +541,7 @@ def plot_stackups_sets(
         # bottom one - show ticks for now ...
         _i = num_stackup_groups-1
         ax_stackup[idx][_i].set_xticks(flank_ticks)
-        ax_stackup[idx][_i].set_xticklabels(flank_ticklabels,fontsize=50)
+        ax_stackup[idx][_i].set_xticklabels(flank_ticklabels,fontsize=fig_fontsize)
         ax_stackup[idx][_i].tick_params(axis="x", length=6)        
         ax_stackup[idx][_i].set_yticks([])
         ax_stackup[idx][_i].set_yticklabels([])
@@ -555,7 +557,7 @@ def plot_stackups_sets(
                     orientation="horizontal",
                     ticks=vlims[idx])
         ax_cbar[idx].tick_params(axis="x", length=6)
-        ax_cbar[idx].set_xticklabels(vlims[idx],fontsize=50)
+        ax_cbar[idx].set_xticklabels(vlims[idx],fontsize=fig_fontsize)
         for _tidx, tick in enumerate(ax_cbar[idx].xaxis.get_majorticklabels()):
             if _tidx == 0:
                 tick.set_horizontalalignment("left")
