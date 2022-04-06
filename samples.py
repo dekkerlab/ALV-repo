@@ -690,6 +690,28 @@ samples["ins_noCTCF_500M"] = {"fname":f"Ctrl500M-CT442-IAA.hg19.{ins_binsize_hum
                   }
 
 
+# insulation in PolII degron system downsampled to match read depth of the corresponding WT control ...
+samples["ins_WT_combined"] = {"fname":f"Hap1-WT-combined.hg19.{ins_binsize_human}.{ins_diamond_human}.bw",
+                   "binsize":ins_binsize,
+                   "flank":2*ins_diamond,
+                   "crange":(-.5,.5),
+                   "norm":None,
+                   "cmap":cmap2,
+                  }
+samples["ins_polII_800M"] = {"fname":f"PolII-800M-NT.hg19.{ins_binsize_human}.{ins_diamond_human}.bw",
+                   "binsize":ins_binsize,
+                   "flank":2*ins_diamond,
+                   "crange":(-.5,.5),
+                   "norm":None,
+                   "cmap":cmap2,
+                  }
+samples["ins_nopolII_800M"] = {"fname":f"PolII-800M-IAA.hg19.{ins_binsize_human}.{ins_diamond_human}.bw",
+                   "binsize":ins_binsize,
+                   "flank":2*ins_diamond,
+                   "crange":(-.5,.5),
+                   "norm":None,
+                   "cmap":cmap2,
+                  }
 
 
 # add compartment status signal here in the samples ...
