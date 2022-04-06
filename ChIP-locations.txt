@@ -1,0 +1,31 @@
+ChIP-seq data
+
+#CTCF and RAD21 peaks
+chr1:153,405,956-153,605,104
+chr1:154,989,365-155,097,507
+chr1:155,136,106-155,200,956
+chr1:155,136,106-155,200,956
+chr3:32,172,573-32,362,161
+chr3:39,304,235-39,561,708
+
+#DDX55 peak that decrease at promoter
+chr1:153,563,139-153,762,287
+chr1:204,462,984-204,484,028
+chr3:45,624,263-45,822,933
+
+#RAD21 stays after CTCF depletion and DDX55 peak
+chr1:160,289,004-160,340,467
+chr1:173,670,619-173,695,654
+
+#TAF5L and RAD21 at promoter
+chr1:163,259,163-163,334,271
+chr1:184,000,318-184,054,215
+chr3:12,480,619-12,730,220
+chr3:53,344,268-53,434,328
+chr3:149,451,099-149,487,431
+
+#TAF5L at promoter that decrease
+chr1:180,456,164-180,508,496
+
+#example of a TAF5L peak that decrease
+chr1:151,649,232-151,734,945
