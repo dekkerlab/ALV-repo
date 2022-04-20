@@ -126,6 +126,7 @@ TAF5L peaks
 
 ## RNA seq
 /nl/umw_job_dekker/users/av90w/RNAseq/data/siRNA/report2546/bigwig_star/S442_NT.bw
+/nl/umw_job_dekker/users/av90w/RNAseq/data/siRNA/report2546/bigwig_star/S442_NTR2.bw
 
 #RSEM for siRNA (and 44 and 442)
 /nl/umw_job_dekker/users/av90w/RNAseq/data/siRNA/report2546/rsem/mergedRSEM/merged_TPM_genes.tsv
