@@ -74,6 +74,7 @@ samples["rad21_norad21"] = {"fname":"GSM2809610_Rao-2017-CHIP002-RAD21-treated.b
 
 
 # some new libraries ...
+# Important to check for data naming clashes in the future !!!
 samples["newctcf"] = {"fname": "NT-CTCF_R1.mLb.clN.bigWig",
                    "binsize":200,
                    "flank":5_000,
@@ -212,6 +213,20 @@ samples["taf5l_noCTCF"] = {"fname":"IAA-TAF5L_R1.mLb.clN.bigWig",
                   }
 #############################
 # ADD some replicate2-s:
+samples["ctcf_r2"] = {"fname": "NT-CTCF_R2.mLb.clN.bigWig",
+                   "binsize":200,
+                   "flank":5_000,
+                   "crange":(0,3.2),
+                   "norm":None,
+                   "cmap":cmap3,
+                  }
+samples["noctcf_r2"] = {"fname":"IAA-CTCF_R2.mLb.clN.bigWig",
+                   "binsize":200,
+                   "flank":5_000,
+                   "crange":(0,3.2),
+                   "norm":None,
+                   "cmap":cmap3,
+                  }
 samples["ddx_CTCF_r2"] = {"fname":"NT-DDX55_R1.mLb.clN.Replicate2.bigWig",
                    "binsize":200,
                    "flank":5_000,
@@ -889,6 +904,14 @@ samples["mrna_ctcf"] = {"fname": "S442_NT.bw",
                    "cmap":cmap3,
                   }
 samples["mrna_noctcf"] = {"fname": "S442_IAA.bw",
+                   "binsize":200,
+                   "flank":5000,
+                   "crange":(2.,22.),
+                   "norm":matplotlib.colors.LogNorm(vmin=1.,vmax=20.),
+                   "cmap":cmap3,
+                  }
+# and replicates ...
+samples["mrna_ctcf_r2"] = {"fname": "S442_NTR2.bw",
                    "binsize":200,
                    "flank":5000,
                    "crange":(2.,22.),
